@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">CrowdWord</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_dashboard">DashboardActivity</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    //Platforms
+    <string name="PLATFORM_WINDOWS">Windows</string>
+    <string name="PLATFORM_IOS">iOs</string>
+    <string name="PLATFORM_ANDROID">Android</string>
+
+    //SharedPreferences
+    <string name="SP_USERCREDENTIALS">userCredentials</string>
+    <string name="SP_APPID">app-id</string>
+
+
+    //Server Adresses.!
+    //
+    <string name="SERVER_ADDRESS1">http://46.101.37.183:8080/crowdspell-web/api/v1/</string>
+    <string name="SERVER_ADDRESS">http://localhost/</string>
+    <string name="SERVER_ADDRESS_USER">users</string>
+    <string name="SERVER_ADDRESS_SETS">sets</string>
+    <string name="SERVER_ADDRESS_SCORES">scores</string>
+    <string name="SERVER_ADDRESS_PARAMID">id</string>
+    <string name="SERVER_ADDRESS_SORTTOP">top</string>
+    <string name="SERVER_ADDRESS_SORTNEW">new</string>
+    <string name="SERVER_ADDRESS_LOGIN">login</string>
+
+
+    //Status
+    <string name="EXISTING_RESOURCE">409</string>
+    <string name="OK">200</string>
+    <string name="NOT_FOUND">404</string>
+    <string name="BAD_REQUEST">400</string>
+    <string name="INTERNAL_ERROR">500</string>
+
+
+    <array name="game_array">
+        <item>Z</item>
+        <item>Y</item>
+        <item>X</item>
+        <item>W</item>
+        <item>V</item>
+        <item>U</item>
+        <item>T</item>
+        <item>S</item>
+        <item>R</item>
+        <item>Q</item>
+        <item>P</item>
+        <item>O</item>
+        <item>N</item>
+        <item>M</item>
+        <item>L</item>
+        <item>K</item>
+        <item>J</item>
+        <item>I</item>
+        <item>H</item>
+        <item>G</item>
+        <item>F</item>
+        <item>E</item>
+        <item>D</item>
+        <item>C</item>
+        <item>B</item>
+        <item>A</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+    </array>
+
+    <string name="drawer_menu_profile">Profile</string>
+    <string name="drawer_menu_suprise">Surprise Me</string>
+    <string name="drawer_menu_create">Create Set</string>
+    <string name="drawer_menu_rated">Most Rated</string>
+    <string name="drawer_menu_popular">Most Popular</string>
+    <string name="drawer_menu_exit">Exit</string>
+
+
+    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
+    <string name="title_activity_new_user">newUserActivity</string>
+    <string name="title_activity_show_game">ShowGameActivity</string>
+    <string name="title_activity_create_set">CreateSetActivity</string>
+    <string name="title_activity_game_new">GameNewActivity</string>
+    <string name="title_activity_guest_dashboard">GuestDashboardActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_guest">GuestActivity</string>
+    <string name="title_activity_summary">SummaryActivity</string>
+
+    <string name="navigation_item_1">Home</string>
+    <string name="navigation_item_2">Events</string>
+    <string name="starred_string">Starred</string>
+    <string name="inbox_string">Inbox</string>
+    <string name="sent_mail_string">Sent mail</string>
+    <string name="draft_string">Drafts</string>
+    <string name="subheader">Subheader</string>
+    <string name="trash_string">Trash</string>
+    <string name="all_mail_string">All mails</string>
+    <string name="spam_string">Spams</string>
+    <string name="closeDrawer">Navigation View</string>
+    <string name="openDrawer">Navigation View Closed</string>
+    <string name="drawer_menu_leaderboard">LeaderBoards</string>
+    <string name="search_title">Search Sets</string>
+    <string name="search_hint">Search</string>
+</resources>

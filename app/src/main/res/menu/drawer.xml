@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group_1"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/drawer_profile"
+            android:checked="false"
+            android:title="@string/drawer_menu_profile" />
+        <item
+            android:id="@+id/drawer_create"
+            android:checked="false"
+            android:title="@string/drawer_menu_create" />
+        <item
+            android:id="@+id/drawer_suprise"
+            android:checked="false"
+            android:title="@string/drawer_menu_suprise" />
+        <item
+            android:id="@+id/drawer_leaderboard"
+            android:checked="false"
+            android:title="@string/drawer_menu_leaderboard" />
+    </group>
+    <group
+        android:id="@+id/group_2"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_rated"
+            android:checked="false"
+            android:title="@string/drawer_menu_rated" />
+        <item
+            android:id="@+id/drawer_popular"
+            android:checked="false"
+            android:title="@string/drawer_menu_popular" />
+
+    </group>
+    <group
+        android:id="@+id/group_3"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/drawer_exit"
+            android:checked="false"
+            android:icon="@drawable/ic_delete_black"
+            android:title="@string/drawer_menu_exit" />
+
+    </group>
+</menu>
