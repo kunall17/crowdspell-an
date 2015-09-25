@@ -3,15 +3,18 @@ package com.igl.crowdword.core;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.igl.crowdword.R;
 import com.igl.crowdword.fxns.User;
 import com.igl.crowdword.fxns.UserDetails;
 
-import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by MAHE on 9/6/2015.
@@ -26,28 +29,22 @@ public class UserFunctions {
         return asd;
     }
 
-    public Boolean checkInternetConnection(Context context){
+
+    public Boolean checkInternetConnection(Context _context) {
         // get Connectivity Manager object to check connection
-        ConnectivityManager connec =
-                (ConnectivityManager) context.getSystemService(context.CONNECTIVITY_SERVICE);
+        ConnectivityManager connectivity = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (connectivity != null) {
+            NetworkInfo[] info = connectivity.getAllNetworkInfo();
+            if (info != null)
+                for (int i = 0; i < info.length; i++)
+                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
+                        return true;
+                    }
 
-        // Check for network connections
-        if ( connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTED ||
-                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTING ||
-                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTING ||
-                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED ) {
-
-            // if connected with internet
-            return true;
-
-        } else if (
-                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.DISCONNECTED ||
-                        connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED  ) {
-
-            return false;
         }
-return false;
+        return false;
     }
+
     //TODO getCurrent User
     public User getCurrentUser(Context context) {
         User us = new User();
@@ -78,41 +75,67 @@ return false;
     }
 
     public Date getCurrentDate() {
-        Calendar c = Calendar.getInstance();
-        System.out.println("Current time => " + c.getTime());
-
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
-        String formattedDate = df.format(c.getTime());
-
-        return (Date.valueOf(c.getTime().toString()));
+        String dateStr = "04/05/2010";
+        SimpleDateFormat curFormater = new SimpleDateFormat("dd/MM/yyyy");
+        Date dateObj = null;
+        try {
+            dateObj = curFormater.parse(dateStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return dateObj;
     }
 
     public void saveToSharedPreferences(User user, Context context) {
         SharedPreferences sp = getShared(context);
         SharedPreferences.Editor spe = sp.edit();
 
-        spe.putString("username", user.getUsername());
-        spe.putString("password", user.getPassword());
-        spe.putString("authProvider", user.getAuthenticationProvider());
-        spe.putString("salt", user.getSalt());
-        spe.putString("token", user.getToken());
-        spe.putLong("id", user.getId());
-        spe.putString("joiningDate", user.getJoiningDate().toString());
+        try {
 
-        //Insert UserDetails
-        spe.putString("email", user.getDetails().getEmail());
-        spe.putString("platform", user.getDetails().getPlatform());
-        spe.commit();
+            spe.putString("username", user.getUsername());
+            spe.putString("password", user.getPassword());
+            spe.putString("authProvider", user.getAuthenticationProvider());
+            spe.putString("salt", user.getSalt());
+            spe.putString("token", user.getToken());
+            if (user.getId() != null) spe.putLong("id", user.getId());
+            if (user.getJoiningDate() != null)
+                spe.putString("joiningDate", user.getJoiningDate().toString());
+
+            //Insert UserDetails
+            spe.putString("email", user.getDetails().getEmail());
+            spe.putString("platform", user.getDetails().getPlatform());
+            spe.commit();
+        } catch (Exception e) {
+            Log.d("exception-error", e.toString());
+
+        } finally {
+
+        }
     }
 
     public Boolean checkIfSharedPreferencesforUserExists(Context context) {
         Boolean asd = false;
         SharedPreferences sp = getShared(context);
-        if (!sp.contains(context.getResources().getString(R.string.SP_APPID).toString())) {
+        if (sp.contains(context.getResources().getString(R.string.SP_APPID).toString())) {
             asd = true;
             //Indicate that the default shared prefs have been set
         }
         return asd;
+    }
+
+    public String checkIfShared(Context context) {
+        Boolean asd = false;
+        SharedPreferences sp = getShared(context);
+        if (!sp.contains("username")) {
+            return sp.getString("username", "34");  //Indicate that the default shared prefs have been set
+        }
+        return "something";
+    }
+
+    public void deleteSharedPreferences(Context context) {
+        SharedPreferences sp = getShared(context);
+        sp.edit().clear();
+        sp.edit().commit();
     }
 
     public SharedPreferences getShared(Context context) {
@@ -130,7 +153,7 @@ return false;
         Boolean asd = false;
         SharedPreferences spe = getShared(context);
         String d = spe.getString("id", "");
-        if (d == "guestmode") {
+        if (d == context.getResources().getString(R.string.guestmode)) {
             asd = true;
         }
         return asd;
@@ -138,7 +161,7 @@ return false;
 
     public void saveAsGuest(Context context) {
         User user = new User();
-        user.setId(Long.valueOf("guestmode"));
+        user.setId(Long.valueOf(context.getResources().getString(R.string.guestmode)));
         user.setJoiningDate(getCurrentDate());
         saveToSharedPreferences(user, context);
     }

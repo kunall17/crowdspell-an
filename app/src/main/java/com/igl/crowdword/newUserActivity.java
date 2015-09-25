@@ -6,9 +6,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.igl.crowdword.DbRequest.dbMethodsAdapter;
 import com.igl.crowdword.HTTPRequest.UserManager;
+import com.igl.crowdword.core.UserFunctions;
 import com.igl.crowdword.fxns.UserDetails;
 import com.igl.crowdword.fxns.User;
 
@@ -16,7 +18,7 @@ import java.io.IOException;
 import java.util.Date;
 
 public class newUserActivity extends ActionBarActivity {
-
+//TODO Make UI BETTER
     EditText un_et;
     EditText pwd_et;
     EditText mail_et;
@@ -55,7 +57,10 @@ public class newUserActivity extends ActionBarActivity {
     }
 
     public void createNewUser_Click(View v){
-
+        if (new UserFunctions().checkInternetConnection(this) == false) {
+            Toast.makeText(this, "Please check your Internet Connection", Toast.LENGTH_LONG).show();
+            return;
+        }
         Date d=new Date();
 
         User newUser = new User();

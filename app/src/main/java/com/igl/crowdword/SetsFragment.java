@@ -234,6 +234,42 @@ public class SetsFragment extends android.support.v4.app.Fragment {
 
     View rootView;
 
+    public void initializeList() {
+        if (new UserFunctions().checkInternetConnection(getActivity()) == false) {
+            Toast.makeText(getActivity(), "Please check your Internet Connection", Toast.LENGTH_LONG).show();
+            return;
+        }
+        String json1 = "";
+
+        if (UserFunctions.checkForServer(getActivity()) == true) {
+            GameManager.getAllSetsAsync asd = new GameManager.getAllSetsAsync();
+            json1 = String.valueOf(asd.execute(getActivity()));
+        } else {
+            json1 = getJson();
+        }
+        JsonElement json = new JsonParser().parse(json1);
+        JsonArray array = json.getAsJsonArray();
+        Iterator iterator = array.iterator();
+        wordset_list = new ArrayList<WordSet>();
+        int i = 0;
+        String[] nameArray = null;
+        nameArray = new String[array.size()];
+
+        while (iterator.hasNext()) {
+            JsonElement json2 = (JsonElement) iterator.next();
+            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+            WordSet wordset = gson.fromJson(json2, WordSet.class);
+            nameArray[i] = wordset.getName();
+            i++;
+            wordset_list.add(wordset);
+        }
+        wordsets_new = wordset_list;
+        mainListViewAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, nameArray);
+        //ArrayAdapter<String> adap = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,game_title);
+        listview_games.setAdapter(mainListViewAdapter);
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -250,74 +286,12 @@ public class SetsFragment extends android.support.v4.app.Fragment {
             }
         });
 
-
-        //String json = getResources().getString(R.string.testing_json).toString();
-
-
-//String[] drawer_together = ArrayUtils.addAll(drawer_navigation,drawer_sets,drawer_sets);
-
-// This patch of code can be made better
-//        for (int i = 0; i < drawer_navigation.length; i++) {
-//            drawer_together[i] = drawer_navigation[i];
-//        }
-//
-//        int x = drawer_together.length;
-//        for(int i=0;i<drawer_sets.length; i++){
-//            drawer_together[x+i]=drawer_sets[i];
-//        }
-//
-//        x= drawer_together.length;
-//        for(int i=0;i<drawer_more.length; i++){
-//            drawer_together[x+i]=drawer_more[i];
-//        }
-
-
-//Till heree
         actv = (AutoCompleteTextView) rootView.findViewById(R.id.tags_actv);
 
 
         listview_games = (ListView) rootView.findViewById(R.id.game_list);
 
-        String[] nameArray = null;
-//        try {
-////       List<WordSet> Wordsetx = asd.readValue(s,new TypeReference<List<WordSet>>(){});
-//
-//  //          wordset = Wordsetx.get(1);
-//    //        System.out.println("NAMe: 0"+wordset.getName());
-//
-//             // nameArray = new String[Wordsetx.size()];
-//
-//      //  } catch (IOException e) {
-//        //    e.printStackTrace();
-//        }
-//
-        String json1 = "";
-        if (UserFunctions.checkForServer(getActivity()) == true) {
-            GameManager.getAllSetsAsync asd = new GameManager.getAllSetsAsync();
-            json1 = String.valueOf(asd.execute(getActivity()));
-        } else {
-            json1 = getJson();
-        }
-        JsonElement json = new JsonParser().parse(json1);
-        JsonArray array = json.getAsJsonArray();
-        Iterator iterator = array.iterator();
-        wordset_list = new ArrayList<WordSet>();
-        int i = 0;
-        nameArray = new String[array.size()];
-
-        while (iterator.hasNext()) {
-            JsonElement json2 = (JsonElement) iterator.next();
-            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
-            WordSet wordset = gson.fromJson(json2, WordSet.class);
-            nameArray[i] = wordset.getName();
-            i++;
-            wordset_list.add(wordset);
-        }
-        wordsets_new = wordset_list;
-
-        mainListViewAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, nameArray);
-        //ArrayAdapter<String> adap = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,game_title);
-        listview_games.setAdapter(mainListViewAdapter);
+        initializeList();
         listview_games.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

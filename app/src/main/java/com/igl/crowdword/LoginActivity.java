@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.concurrent.ExecutionException;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -34,8 +36,8 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        user_ET = (EditText) findViewById(R.id.userName_ET);
-        pass_ET = (EditText) findViewById(R.id.password_ET);
+        user_ET = (EditText) findViewById(R.id.loginIdText);
+        pass_ET = (EditText) findViewById(R.id.pwdText);
 
         UserFunctions asd = new UserFunctions();
         if (asd.checkIfGuestModeIsOn(this) == true) {
@@ -44,6 +46,8 @@ public class LoginActivity extends ActionBarActivity {
             startActivity(in1);
         } else if (asd.checkIfSharedPreferencesforUserExists(this)) {
             System.out.println("ASD123");
+            asd.deleteSharedPreferences(this);
+            Log.d("xxx", asd.checkIfShared(this));
             Intent in1 = new Intent(LoginActivity.this, DashboardActivity.class);
             startActivity(in1);
         }
@@ -79,34 +83,45 @@ public class LoginActivity extends ActionBarActivity {
         UserFunctions usf = new UserFunctions();
 
         if (getResources().getString(R.string.SERVER_ADDRESS) == getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
-
+            if (new UserFunctions().checkInternetConnection(this) == false) {
+                Toast.makeText(this, "Please check your Internet Connection", Toast.LENGTH_LONG).show();
+                return;
+            }
             User user = new User();
             if (usf.checkIfSharedPreferencesforUserExists(this) == true) {
                 user = usf.getCurrentUser(this);
-            } else if(user_ET.getText()!= null || pass_ET.getText()!=null) {
-                String username = user_ET.getText().toString();
+            } else if (String.valueOf(user_ET.getText()) != null || String.valueOf(pass_ET.getText()) != null) {
+                String username = String.valueOf(user_ET.getText());
                 String password = pass_ET.getText().toString();
 
                 try {
 
-                    String appid = null;
+                    String token = null;
                     user.setUsername(username);
                     user.setPassword(password);
-
-                    appid = UserManager.login(user);
-                    user.setToken(appid);
+                    UserManager.CheckLogin checklogin = new UserManager.CheckLogin();
+                    token = checklogin.execute(user).get();
+                    user.setToken(token);
                     usf.saveToSharedPreferences(user, this);
-                } catch (IOException e) {
+                    Log.d("token", token);
+                    if (token.length() == 36) {
+                        Intent in2 = new Intent(LoginActivity.this, DashboardActivity.class);
+                        startActivity(in2);
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } catch (ExecutionException e) {
                     e.printStackTrace();
                 }
-            } else if(user_ET.getText()== null || pass_ET.getText() ==null){
-                Toast.makeText(this,"Please Enter Password and UserName!",Toast.LENGTH_LONG).show();
+            } else if (user_ET.getText() == null || pass_ET.getText() == null) {
+                Toast.makeText(this, "Please Enter Password and UserName!", Toast.LENGTH_LONG).show();
             }
         } else {
 
-        Intent intent = new Intent(this, DashboardActivity.class);
-        startActivity(intent);
-    }}
+            Intent intent = new Intent(this, DashboardActivity.class);
+            startActivity(intent);
+        }
+    }
 
     public void newUser_click(View v) {
         Intent intent = new Intent(this, newUserActivity.class);
@@ -163,7 +178,6 @@ public class LoginActivity extends ActionBarActivity {
     public void updateDisplay(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
-
 
 
 }

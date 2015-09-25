@@ -31,6 +31,7 @@ import java.util.List;
 
 public class CreateSetActivity extends ActionBarActivity {
 
+
     Spinner tags_spn;
     Spinner words_spn;
     EditText words_txt;
@@ -205,7 +206,7 @@ public class CreateSetActivity extends ActionBarActivity {
             GameManager.createSetAsync create = new GameManager.createSetAsync();
             create.execute(wordset);
 
-            } else {
+            } else if(new UserFunctions().checkInternetConnection(this) == false) {
                 Toast.makeText(CreateSetActivity.this, "Please make sure your Internet is Working!", Toast.LENGTH_LONG).show();
             }
         }

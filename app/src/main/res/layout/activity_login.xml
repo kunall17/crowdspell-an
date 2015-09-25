@@ -25,19 +25,24 @@
             android:layout_width="179dp"
             android:layout_height="wrap_content"
             android:id="@+id/loginIdText"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:gravity="center"
+            android:layout_gravity="center" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Password"
             android:id="@+id/textView"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:gravity="center"
+            android:layout_gravity="center"/>
 
         <EditText
             android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:id="@+id/pwdText" />
+            android:id="@+id/pwdText" android:inputType="textPassword"
+            android:ems="10"/>
 
         <Button
             android:layout_width="wrap_content"

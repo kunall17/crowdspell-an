@@ -27,7 +27,8 @@
                     android:id="@+id/tags_actv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="10" />
+                    android:layout_weight="10"
+                    android:hint="Add tags to filter" />
 
                 <Button
                     android:id="@+id/addTag_btn"
