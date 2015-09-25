@@ -39,10 +39,12 @@ import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 
 /**
@@ -235,39 +237,53 @@ public class SetsFragment extends android.support.v4.app.Fragment {
     View rootView;
 
     public void initializeList() {
-        if (new UserFunctions().checkInternetConnection(getActivity()) == false) {
-            Toast.makeText(getActivity(), "Please check your Internet Connection", Toast.LENGTH_LONG).show();
-            return;
-        }
+
         String json1 = "";
+        wordset_list = new ArrayList<WordSet>();
+        String[] nameArray = null;
 
         if (UserFunctions.checkForServer(getActivity()) == true) {
+            if (new UserFunctions().checkInternetConnection(getActivity()) == false) {
+                Toast.makeText(getActivity(), "Please check your Internet Connection", Toast.LENGTH_LONG).show();
+                return;
+            }
+
             GameManager.getAllSetsAsync asd = new GameManager.getAllSetsAsync();
-            json1 = String.valueOf(asd.execute(getActivity()));
+            try {
+                wordset_list = asd.execute(getActivity()).get();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+
+            nameArray = new String[wordset_list.size()];
+            for (int i =0 ; i<wordset_list.size() ; i++){
+                nameArray[i] = wordset_list.get(i).getName();
+            }
+            //nameArray = getNameArray(wordset_list).toArray(new String[wordset_list.size()]);
         } else {
             json1 = getJson();
-        }
-        JsonElement json = new JsonParser().parse(json1);
-        JsonArray array = json.getAsJsonArray();
-        Iterator iterator = array.iterator();
-        wordset_list = new ArrayList<WordSet>();
-        int i = 0;
-        String[] nameArray = null;
-        nameArray = new String[array.size()];
+            JsonElement json = new JsonParser().parse(json1);
+            JsonArray array = json.getAsJsonArray();
+            Iterator iterator = array.iterator();
+            int i = 0;
+            nameArray = new String[array.size()];
 
-        while (iterator.hasNext()) {
-            JsonElement json2 = (JsonElement) iterator.next();
-            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
-            WordSet wordset = gson.fromJson(json2, WordSet.class);
-            nameArray[i] = wordset.getName();
-            i++;
-            wordset_list.add(wordset);
+            while (iterator.hasNext()) {
+                JsonElement json2 = (JsonElement) iterator.next();
+                Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
+                WordSet wordset = gson.fromJson(json2, WordSet.class);
+                nameArray[i] = wordset.getName();
+                i++;
+                wordset_list.add(wordset);
+            }
         }
+
         wordsets_new = wordset_list;
         mainListViewAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, nameArray);
         //ArrayAdapter<String> adap = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,game_title);
         listview_games.setAdapter(mainListViewAdapter);
-
     }
 
     @Override

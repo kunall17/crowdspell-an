@@ -178,7 +178,15 @@ public class CreateSetActivity extends ActionBarActivity {
             UserFunctions us = new UserFunctions();
             user = us.getCurrentUser(this);
             wordset.setUser(user);
-            wordset.setCreatedDate(us.getCurrentDate());
+
+                java.util.Date utilDate =us.getCurrentDate();// new java.util.Date();
+                java.sql.Date sqlDate = new java.sql.Date(utilDate.getTime());
+
+
+                System.out.println("utilDate:" + utilDate);
+                System.out.println("sqlDate:" + sqlDate);
+
+            wordset.setCreatedDate(sqlDate);
             wordset.setUserToken(us.getCurrentToken(this));
 
             EditText name = (EditText) findViewById(R.id.name_txt);

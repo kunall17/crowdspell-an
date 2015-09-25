@@ -106,6 +106,16 @@ public class DashboardActivity extends ActionBarActivity {
         setContentView(R.layout.activity_dashboard);
         context = this;
 
+        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent in1 = new Intent(DashboardActivity.this, CreateSetActivity.class);
+                startActivity(in1);
+
+            }
+        });
+
         frag1 = new com.igl.crowdword.SetsFragment();
         frag2 = new com.igl.crowdword.ListFragment();
         frag3 = new com.igl.crowdword.ListFragment();
@@ -127,7 +137,7 @@ public class DashboardActivity extends ActionBarActivity {
 
         MyAdapter.addFragment(frag1, "All Sets");
         MyAdapter.addFragment(frag2, "LeaderBoard");
-       MyAdapter.addFragment(frag3,"Favourites");
+       MyAdapter.addFragment(frag3, "Favourites");
 
         viewpager.setAdapter(MyAdapter);
         tablayout.setTabsFromPagerAdapter(MyAdapter);
@@ -256,15 +266,7 @@ public class DashboardActivity extends ActionBarActivity {
         actionBarDrawerToggle.syncState();
 
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in1 = new Intent(DashboardActivity.this, CreateSetActivity.class);
-                startActivity(in1);
 
-            }
-        });
 
 
     }

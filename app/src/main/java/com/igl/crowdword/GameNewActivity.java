@@ -64,6 +64,7 @@ public class GameNewActivity extends ActionBarActivity {
     List<Button> threeButtons = new ArrayList<Button>();
     char currentChar;
     int words_won = 0;
+    int maxChances = 5;
 
     public void print(String text) {
         System.out.println(text);
@@ -86,7 +87,7 @@ public class GameNewActivity extends ActionBarActivity {
 
         String ssc_json = gson.toJson(ssc);
         in1.putExtra("ssc", ssc_json);
-        Log.d("json",ssc_json);
+        Log.d("json", ssc_json);
 
         in1.putExtra("words_won", words_won);
         startActivity(in1);
@@ -99,7 +100,6 @@ public class GameNewActivity extends ActionBarActivity {
 
     }
 
-    int maxChances = 5;
 
     void checkForMaxChances(String text) {
 
@@ -118,7 +118,7 @@ public class GameNewActivity extends ActionBarActivity {
                 wordset.getWords().get(currentGame).setChancesTaken(maxChances);
             } else {
                 wordset.getWords().get(currentGame).setChancesTaken(attempts);
-                Toast.makeText(this, "You Completed in " + wrong + " chances!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "You Completed in " + wrong + " wrong attempts!", Toast.LENGTH_LONG).show();
 
             }
             currentGame += 1;
@@ -162,10 +162,9 @@ public class GameNewActivity extends ActionBarActivity {
         } else if (wrong == 4) {
             circle.setColor(Color.argb(255, 247, 57, 15));
         } else if (wrong == 5) {
-            Toast.makeText(this, "Your Chances khatam ho gayi!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "You lost this Challenge!", Toast.LENGTH_LONG).show();
             circle.setColor(Color.argb(255, 247, 49, 15));
         } else if (wrong == 6) {
-            Toast.makeText(this, "Your Chances khatam ho gayi!", Toast.LENGTH_LONG).show();
             circle.setColor(Color.argb(255, 148, 11, 0));
         }
     }
@@ -245,6 +244,7 @@ public class GameNewActivity extends ActionBarActivity {
                 char_array.remove(c);
             }
         }
+        char_array.removeAll(word_char);
     }
 
     private void checkAlpha(String theLetter) {
@@ -413,7 +413,7 @@ public class GameNewActivity extends ActionBarActivity {
 
     public void next_btn(View v) {
 
-        if (currentGame+1 >= totalGame) {
+        if (currentGame + 1 >= totalGame) {
             gameCompleted();
         } else {
             wordset.getWords().get(currentGame).setChancesTaken(maxChances);
@@ -558,13 +558,13 @@ public class GameNewActivity extends ActionBarActivity {
 
         int[] showLetters = randomize(phaltu.length());
 
-
+        ArrayList<Character> showLetters_list = new ArrayList<Character>();
         for (int i = 0; i < showLetters.length; i++) {
             String letter = String.valueOf(word.charAt(showLetters[i]));
             if (char_array.contains(letter.charAt(0))) {
                 char_array.remove(char_array.indexOf(letter.charAt(0)));
             }
-
+            showLetters_list.add(letter.charAt(0));
             if (word_char.contains(letter.charAt(0)))
                 word_char.remove(word_char.indexOf(letter.charAt(0)));
 
@@ -604,17 +604,21 @@ public class GameNewActivity extends ActionBarActivity {
 
             }
 
-            backup_char_array = char_array;
+
             //myTextViews[showLetters[i]].setText(letter);
             System.out.println("DisableButton=" + letter);
 
 
         }
+        char_array.removeAll(showLetters_list);
+        word_char.removeAll(showLetters_list);
+        finalCheck();
+        backup_char_array = char_array;
         nextButton();
         Collections.shuffle(word_char);
         printCharArray();
         currentChar = word_char.get(0);
-        finalCheck();
+
     }
 
     public void testing_btjn(View v) {
