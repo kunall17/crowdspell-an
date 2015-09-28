@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -223,6 +224,18 @@ public class SetsFragment extends android.support.v4.app.Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        if (savedInstanceState == null) {
+            initializeList();
+
+        } else {
+            Gson gson = new Gson();
+            String json = savedInstanceState.getString("list_gson");
+            wordset_list = Arrays.asList(gson.fromJson(json, WordSet[].class));
+            setListDisplay();
+        }
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -237,10 +250,9 @@ public class SetsFragment extends android.support.v4.app.Fragment {
     View rootView;
 
     public void initializeList() {
-
+        Log.d("Initialing list called", "called");
         String json1 = "";
         wordset_list = new ArrayList<WordSet>();
-        String[] nameArray = null;
 
         if (UserFunctions.checkForServer(getActivity()) == true) {
             if (new UserFunctions().checkInternetConnection(getActivity()) == false) {
@@ -248,19 +260,22 @@ public class SetsFragment extends android.support.v4.app.Fragment {
                 return;
             }
 
-            GameManager.getAllSetsAsync asd = new GameManager.getAllSetsAsync();
+            GameManager.getAllSetsAsync2 asd = new GameManager.getAllSetsAsync2();
             try {
-                wordset_list = asd.execute(getActivity()).get();
+                if (getResources().getString(R.string.SERVER_ADDRESS) == getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
+                    if (new UserFunctions().checkInternetConnection(getActivity()) == false) {
+                        Toast.makeText(getActivity(), "Please check your Internet Connection", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    wordset_list = asd.execute(getActivity()).get();
+                }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
 
-            nameArray = new String[wordset_list.size()];
-            for (int i =0 ; i<wordset_list.size() ; i++){
-                nameArray[i] = wordset_list.get(i).getName();
-            }
+
             //nameArray = getNameArray(wordset_list).toArray(new String[wordset_list.size()]);
         } else {
             json1 = getJson();
@@ -268,19 +283,28 @@ public class SetsFragment extends android.support.v4.app.Fragment {
             JsonArray array = json.getAsJsonArray();
             Iterator iterator = array.iterator();
             int i = 0;
-            nameArray = new String[array.size()];
 
             while (iterator.hasNext()) {
                 JsonElement json2 = (JsonElement) iterator.next();
                 Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
                 WordSet wordset = gson.fromJson(json2, WordSet.class);
-                nameArray[i] = wordset.getName();
                 i++;
                 wordset_list.add(wordset);
             }
         }
+        if (wordset_list == null) {
+            initializeList();
+        } else {
+            wordsets_new = wordset_list;
+        }
 
-        wordsets_new = wordset_list;
+    }
+
+    public void setListDisplay() {
+        String[] nameArray = new String[wordset_list.size()];
+        for (int i = 0; i < wordset_list.size(); i++) {
+            nameArray[i] = wordset_list.get(i).getName();
+        }
         mainListViewAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, nameArray);
         //ArrayAdapter<String> adap = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,game_title);
         listview_games.setAdapter(mainListViewAdapter);
@@ -291,23 +315,22 @@ public class SetsFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_sets, container, false);
-
-
-        srl = (SwipeRefreshLayout) rootView.findViewById(R.id.refreshSwipe_list);
-        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                filterWithTags();
-                Toast.makeText(getActivity(), "ASD", Toast.LENGTH_LONG).show();
-            }
-        });
-
-        actv = (AutoCompleteTextView) rootView.findViewById(R.id.tags_actv);
-
-
         listview_games = (ListView) rootView.findViewById(R.id.game_list);
+        setListDisplay();
+//
+//        srl = (SwipeRefreshLayout) rootView.findViewById(R.id.refreshSwipe_list);
+//        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                filterWithTags();
+//                Toast.makeText(getActivity(), "ASD", Toast.LENGTH_LONG).show();
+//            }
+//        });
+//
+//        actv = (AutoCompleteTextView) rootView.findViewById(R.id.tags_actv);
+//
+//
 
-        initializeList();
         listview_games.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -315,87 +338,87 @@ public class SetsFragment extends android.support.v4.app.Fragment {
                 startGame(position);
             }
         });
-
-
-//Added Newwly
-
-        allTags = extractTags();
-        final ArrayAdapter<String> adapter_actv = new ArrayAdapter<String>(getActivity(),
-                android.R.layout.simple_list_item_1, allTags);
-
-        //Getting the instance of AutoCompleteTextView
-        actv.setThreshold(3);//will start working from first character
-        actv.setAdapter(adapter_actv);//setting the adapter data into the AutoCompleteTextView
-
-
-        String[] tags_array = new String[100];
-        tags_array[0] = "";
-
-
-        final ArrayList<String> spn_array = new ArrayList<String>();
-        spn_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, spn_array) {
-
-            @Override
-            public View getDropDownView(int position, View convertView, ViewGroup parent) {
-                View v = null;
-                if (position == 0) {
-                    TextView tv = new TextView(getContext());
-                    tv.setVisibility(View.GONE);
-                    v = tv;
-                } else {
-                    v = super.getDropDownView(position, null, parent);
-                }
-                return v;
-            }
-        };
-        Spinner spinner = (Spinner) rootView.findViewById(R.id.tags_spnr);
-
-        spn_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(spn_adapter);
-
-
-        actv.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                spn_adapter.add(adapter_actv.getItem(position));
-                Toast.makeText(getActivity(), "Tag Added", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-
-
-        });
-
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                Toast.makeText(getActivity(), "SUPER", Toast.LENGTH_LONG).show();
-//                spn_adapter.remove( spn_adapter.getItem(position) );
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-
-        });
-
-        spn_adapter.add("Add Tags Here");
-
-
-        Button addTag = (Button) rootView.findViewById(R.id.addTag_btn);
-        addTag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                spn_adapter.add(actv.getText().toString());
-                Toast.makeText(getActivity(), "Tag Added", Toast.LENGTH_LONG).show();
-                actv.setText("");
-            }
-        });
+//
+//
+////Added Newwly
+//
+//        allTags = extractTags();
+//        final ArrayAdapter<String> adapter_actv = new ArrayAdapter<String>(getActivity(),
+//                android.R.layout.simple_list_item_1, allTags);
+//
+//        //Getting the instance of AutoCompleteTextView
+//        actv.setThreshold(3);//will start working from first character
+//        actv.setAdapter(adapter_actv);//setting the adapter data into the AutoCompleteTextView
+//
+//
+//        String[] tags_array = new String[100];
+//        tags_array[0] = "";
+//
+//
+//        final ArrayList<String> spn_array = new ArrayList<String>();
+//        spn_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, spn_array) {
+//
+//            @Override
+//            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+//                View v = null;
+//                if (position == 0) {
+//                    TextView tv = new TextView(getContext());
+//                    tv.setVisibility(View.GONE);
+//                    v = tv;
+//                } else {
+//                    v = super.getDropDownView(position, null, parent);
+//                }
+//                return v;
+//            }
+//        };
+//        Spinner spinner = (Spinner) rootView.findViewById(R.id.tags_spnr);
+//
+//        spn_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(spn_adapter);
+//
+//
+//        actv.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                spn_adapter.add(adapter_actv.getItem(position));
+//                Toast.makeText(getActivity(), "Tag Added", Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//
+//
+//        });
+//
+//
+//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//
+//            @Override
+//            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+//                Toast.makeText(getActivity(), "SUPER", Toast.LENGTH_LONG).show();
+////                spn_adapter.remove( spn_adapter.getItem(position) );
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parentView) {
+//            }
+//
+//        });
+//
+//        spn_adapter.add("Add Tags Here");
+//
+//
+//        Button addTag = (Button) rootView.findViewById(R.id.addTag_btn);
+//        addTag.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                spn_adapter.add(actv.getText().toString());
+//                Toast.makeText(getActivity(), "Tag Added", Toast.LENGTH_LONG).show();
+//                actv.setText("");
+//            }
+//        });
         return rootView;
     }
 
@@ -433,4 +456,13 @@ public class SetsFragment extends android.support.v4.app.Fragment {
         public void onFragmentInteraction(Uri uri);
     }
 
+    String list_gson;
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Gson gson = new Gson();
+        list_gson = gson.toJson(wordset_list);
+        outState.putString("list_gson", list_gson);
+    }
 }

@@ -115,9 +115,16 @@ public class UserManager extends NetworkManager {
         @Override
         protected List<WordSet> doInBackground(String... params) {
             try {
-                HttpURLConnection connection = getConnection(ApiPaths.FAVOURITES + "/"
-                        + params[0]);
-                String listString = readFromConnection(connection);
+               URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/favourites/"+params[0]);
+
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+                con.setRequestProperty(ApiPaths.APP_AUTH_KEY,
+                        ApiPaths.ANDROID_APP_KEY);
+                con.connect();
+
+//                HttpURLConnection connection = getConnection(ApiPaths.FAVOURITES + "/" + params[0]);
+                String listString = readFromConnection(con);
                 LOG.fine("list [ " + listString);
                 Gson gson = getJsonWriterWithCustomDate();
                 WordSet[] favourites = gson.fromJson(listString, WordSet[].class);

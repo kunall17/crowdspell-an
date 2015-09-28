@@ -26,7 +26,7 @@
 
     //Server Adresses.!
     //
-    <string name="SERVER_ADDRESS1">http://localhost</string>
+    <string name="SERVER_ADDRESS1">http://localhost/</string>
     <string name="SERVER_ADDRESS">http://46.101.37.183:8080/crowdspell-web/api/v1/</string>
     <string name="SERVER_ADDRESS_USER">users</string>
     <string name="SERVER_ADDRESS_SETS">sets</string>
@@ -36,7 +36,7 @@
     <string name="SERVER_ADDRESS_SORTNEW">new</string>
     <string name="SERVER_ADDRESS_LOGIN">login</string>
 
-<string name="guestmode">043521</string>
+    <string name="guestmode">043521</string>
     //Status
     <string name="EXISTING_RESOURCE">409</string>
     <string name="OK">200</string>
@@ -121,4 +121,11 @@
     <string name="drawer_menu_leaderboard">LeaderBoards</string>
     <string name="search_title">Search Sets</string>
     <string name="search_hint">Search</string>
+    <string name="title_activity_dashboard_new">DashboardNewActivity</string>
+
+
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
+    <string name="guestmode_warning">Are you Sure you want to enter Guest Mode?
+You will not be able to create sets</string>
 </resources>

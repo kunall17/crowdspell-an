@@ -23,7 +23,8 @@
         <activity
             android:name=".DashboardActivity"
             android:label="@string/title_activity_dashboard" >
-            <meta-data android:name="android.app.searchable"
+            <meta-data
+                android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
         <activity
@@ -53,6 +54,12 @@
         <activity
             android:name=".SummaryActivity"
             android:label="@string/title_activity_summary" >
+        </activity>
+        <activity
+            android:name=".DashboardNewActivity"
+            android:label="@string/title_activity_dashboard_new"
+            android:theme="@style/AppTheme" >
+
         </activity>
     </application>
 

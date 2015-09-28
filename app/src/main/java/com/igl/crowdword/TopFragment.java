@@ -4,14 +4,12 @@ import android.app.Activity;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,20 +21,20 @@ import com.igl.crowdword.core.UserFunctions;
 import com.igl.crowdword.fxns.WordSet;
 import com.igl.crowdword.fxns.analysis.UserPoints;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ListFragment.OnFragmentInteractionListener} interface
+ * {@link TopFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ListFragment#newInstance} factory method to
+ * Use the {@link TopFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ListFragment extends android.support.v4.app.Fragment {
+public class TopFragment extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -45,8 +43,10 @@ public class ListFragment extends android.support.v4.app.Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    SwipeRefreshLayout srl;
+//    SwipeRefreshLayout srl;
 
+    ArrayList<String> set_lists;
+    ArrayAdapter<String> sets_adapter;
     private OnFragmentInteractionListener mListener;
     View rootView;
     ListView listview;
@@ -59,11 +59,11 @@ public class ListFragment extends android.support.v4.app.Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ListFragment.
+     * @return A new instance of fragment TopFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static ListFragment newInstance(String param1, String param2) {
-        ListFragment fragment = new ListFragment();
+    public static TopFragment newInstance(String param1, String param2) {
+        TopFragment fragment = new TopFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,7 +71,7 @@ public class ListFragment extends android.support.v4.app.Fragment {
         return fragment;
     }
 
-    public ListFragment() {
+    public TopFragment() {
         // Required empty public constructor
     }
 
@@ -82,12 +82,9 @@ public class ListFragment extends android.support.v4.app.Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        Bundle args = getArguments();
-        BUNDLE = args.getInt(DashboardActivity.ARG_BUNDLE);
-
     }
 
-    public void noListFound(String text){
+    public void noListFound(String text) {
         LinearLayout ll = (LinearLayout) rootView.findViewById(R.id.linearLayout_lists);
         ll.removeAllViews();
         TextView et = new TextView(getActivity());
@@ -97,24 +94,34 @@ public class ListFragment extends android.support.v4.app.Fragment {
         ll.setGravity(Gravity.CENTER);
         ll.addView(et);
     }
-    public void setUpList(int bundle) {
-        if (bundle == 1) { //LEADERBOARD
+
+    public void setUpList() {
+
             List<UserPoints> userPoints = null;
 
             try {
-                userPoints = GameManager.getAllTopScorers();
-
-            } catch (IOException e) {
+                GameManager.getAllTopScoresAsync gat = new GameManager.getAllTopScoresAsync();
+                if (getResources().getString(R.string.SERVER_ADDRESS) == getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
+                    if (new UserFunctions().checkInternetConnection(getActivity()) == false) {
+                        Toast.makeText(getActivity(), "Please check your Internet Connection", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    userPoints = gat.execute("").get();
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-            if(userPoints== null){
+            if (userPoints == null) {
                 noListFound("Sorry No Top Scorers found!");
 
             } else {
+                set_lists = new ArrayList<String>() ;
+                sets_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, set_lists);
                 for (UserPoints up : userPoints) {
                     set_lists.add(up.getUser().getUsername() + " : " + up.getPoints());
                 }
-                sets_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, set_lists);
                 listview = (ListView) rootView.findViewById(R.id.listView_frag);
                 listview.setAdapter(sets_adapter);
                 listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -124,39 +131,14 @@ public class ListFragment extends android.support.v4.app.Fragment {
                     }
                 });
             }
-        } else { //FAVOURITES
-            List<WordSet> wordsets = null;
-            UserFunctions uf = new UserFunctions();
 
-            wordsets = UserManager.getUserFavourites(uf.getCurrentToken(getActivity()));
 
-            if(wordsets== null){
-            noListFound("Sorry no Favourites found!");
-
-            } else {
-
-            for (WordSet wordset : wordsets) {
-                set_lists.add(wordset.getName());
-            }
-            sets_adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, set_lists);
-            listview = (ListView) rootView.findViewById(R.id.listView_frag);
-            listview.setAdapter(sets_adapter);
-            listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                }
-            });
-        }
-    }
     }
 
     public void filterWithTags() {
 
     }
 
-    ArrayList<String> set_lists;
-    ArrayAdapter<String> sets_adapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -164,14 +146,14 @@ public class ListFragment extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_list, container, false);
 
-        srl = (SwipeRefreshLayout) rootView.findViewById(R.id.refreshSwipe_list);
-        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                filterWithTags();
-            }
-        });
-        setUpList(BUNDLE);
+//        srl = (SwipeRefreshLayout) rootView.findViewById(R.id.refreshSwipe_list);
+//        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                filterWithTags();
+//            }
+//        });
+        setUpList();
 
         return rootView;
     }

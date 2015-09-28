@@ -1,9 +1,10 @@
 package com.igl.crowdword;
 
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,11 +12,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.igl.crowdword.DbRequest.dbMethodsAdapter;
 import com.igl.crowdword.HTTPRequest.UserManager;
 import com.igl.crowdword.core.UserFunctions;
-import com.igl.crowdword.fxns.UserDetails;
 import com.igl.crowdword.fxns.User;
+import com.igl.crowdword.fxns.UserDetails;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,9 +27,10 @@ import java.util.concurrent.ExecutionException;
 
 public class LoginActivity extends ActionBarActivity {
 
+
+    //TODO 404 exception coming on login do error handling.!
     EditText user_ET;
     EditText pass_ET;
-    dbMethodsAdapter dbFunctions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +41,15 @@ public class LoginActivity extends ActionBarActivity {
         pass_ET = (EditText) findViewById(R.id.pwdText);
 
         UserFunctions asd = new UserFunctions();
-        if (asd.checkIfGuestModeIsOn(this) == true) {
+
+        if (asd.checkIfGuestModeIsOn(this)) {
             System.out.println("ASD");
             Intent in1 = new Intent(LoginActivity.this, DashboardActivity.class);
             startActivity(in1);
         } else if (asd.checkIfSharedPreferencesforUserExists(this)) {
             System.out.println("ASD123");
             asd.deleteSharedPreferences(this);
-            Log.d("xxx", asd.checkIfShared(this));
+            Log.d("xxx", asd.getCurrentUsername(this));
             Intent in1 = new Intent(LoginActivity.this, DashboardActivity.class);
             startActivity(in1);
         }
@@ -88,9 +90,9 @@ public class LoginActivity extends ActionBarActivity {
                 return;
             }
             User user = new User();
-            if (usf.checkIfSharedPreferencesforUserExists(this) == true) {
-                user = usf.getCurrentUser(this);
-            } else if (String.valueOf(user_ET.getText()) != null || String.valueOf(pass_ET.getText()) != null) {
+            UserDetails ud = new UserDetails();
+            user.setDetails(ud);
+            if (String.valueOf(user_ET.getText()) != null || String.valueOf(pass_ET.getText()) != null) {
                 String username = String.valueOf(user_ET.getText());
                 String password = pass_ET.getText().toString();
 
@@ -101,12 +103,12 @@ public class LoginActivity extends ActionBarActivity {
                     user.setPassword(password);
                     UserManager.CheckLogin checklogin = new UserManager.CheckLogin();
                     token = checklogin.execute(user).get();
-                    user.setToken(token);
-                    usf.saveToSharedPreferences(user, this);
                     Log.d("token", token);
                     if (token.length() == 36) {
+                        user.setToken(token);
                         Intent in2 = new Intent(LoginActivity.this, DashboardActivity.class);
                         startActivity(in2);
+                        new UserFunctions().saveToSharedPreferences(user, this);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -134,11 +136,27 @@ public class LoginActivity extends ActionBarActivity {
     //    requestData("http://46.101.37.183:8080/crowdspell-web/api/v1/hello");
 
     public void guest_click(View v) {
-        UserFunctions asd = new UserFunctions();
-        asd.saveAsGuest(this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+        builder.setTitle("Guest Mode?");
+        builder.setMessage(getString(R.string.guestmode_warning));
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                UserFunctions asd = new UserFunctions();
+                asd.saveAsGuest(getBaseContext());
+                Intent in1 = new Intent(LoginActivity.this, DashboardActivity.class);
+                startActivity(in1);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
 
-        Intent in1 = new Intent(LoginActivity.this, DashboardActivity.class);
-        startActivity(in1);
 
     }
 

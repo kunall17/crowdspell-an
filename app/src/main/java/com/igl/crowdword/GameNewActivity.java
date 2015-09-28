@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.media.Image;
 import android.os.CountDownTimer;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
@@ -15,12 +16,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.igl.crowdword.fxns.Word;
 import com.igl.crowdword.fxns.WordSet;
 import com.igl.crowdword.fxns.analysis.SetScoreCarrier;
 
@@ -51,7 +54,7 @@ public class GameNewActivity extends ActionBarActivity {
 
     ImageView processColors;
 
-    int currentGame = 1;
+    int currentGame = 0;
     int totalGame;
     TextView circle_txt;
     GradientDrawable circle;
@@ -65,6 +68,10 @@ public class GameNewActivity extends ActionBarActivity {
     char currentChar;
     int words_won = 0;
     int maxChances = 5;
+    Button left;
+    Button right;
+    Button middle;
+    String words_lost[];
 
     public void print(String text) {
         System.out.println(text);
@@ -83,7 +90,7 @@ public class GameNewActivity extends ActionBarActivity {
         SetScoreCarrier ssc = new SetScoreCarrier();
         ssc.setWords(wordset.getWords());
         ssc.setSetId(wordset.getId());
-
+        in1.putExtra("words_lost", words_lost);
 
         String ssc_json = gson.toJson(ssc);
         in1.putExtra("ssc", ssc_json);
@@ -108,8 +115,27 @@ public class GameNewActivity extends ActionBarActivity {
     private void win() {
         Toast.makeText(this, "Fuck You won.!", Toast.LENGTH_LONG);
         words_won++;
-        if (currentGame == wordset.getWords().size()) {
-            gameCompleted();
+        if (currentGame + 1 == wordset.getWords().size()) {
+            wordset.getWords().get(currentGame).setChancesTaken(maxChances);
+            words_lost[currentGame] = word;
+            currentGame++;
+            displayAllLetters();
+
+
+            new CountDownTimer(2000, 1000) {
+
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    // do something after 1s
+                }
+
+                @Override
+                public void onFinish() {
+                    gameCompleted();
+
+                }
+
+            }.start();
         } else {
 
             if (wrong > maxChances) {
@@ -143,6 +169,57 @@ public class GameNewActivity extends ActionBarActivity {
 
 
         }
+    }
+
+    public void next_btn(View v) {
+        imageButton.setEnabled(false);
+        if (currentGame + 1 >= totalGame) {
+            wordset.getWords().get(currentGame).setChancesTaken(maxChances);
+            words_lost[currentGame] = word;
+            currentGame++;
+            displayAllLetters();
+
+
+            new CountDownTimer(2000, 1000) {
+
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    // do something after 1s
+                }
+
+                @Override
+                public void onFinish() {
+                    gameCompleted();
+
+                }
+
+            }.start();
+        } else {
+            wordset.getWords().get(currentGame).setChancesTaken(maxChances);
+            words_lost[currentGame] = word;
+            currentGame++;
+            displayAllLetters();
+
+
+            new CountDownTimer(2000, 1000) {
+
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    // do something after 1s
+                }
+
+                @Override
+                public void onFinish() {
+                    resetAll();
+                    removeTextViews();
+                    setupGame(currentGame);
+                    imageButton.setEnabled(true);
+
+                }
+
+            }.start();
+        }
+
     }
 
     public void updateStatus() {
@@ -186,10 +263,6 @@ public class GameNewActivity extends ActionBarActivity {
         }
     }
 
-
-    Button left;
-    Button right;
-    Button middle;
 
     public void nextButton() {
         Random rnd = new Random();
@@ -334,7 +407,7 @@ public class GameNewActivity extends ActionBarActivity {
         circle = (GradientDrawable) circle_txt.getBackground();
         totalGame = noOfWords;
         setupGame(0);
-
+        words_lost = new String[noOfWords];
         LinearLayout circle_linear = (LinearLayout) findViewById(R.id.circle_linear);
         TextView circle_txt = (TextView) findViewById(R.id.circle_txt);
         int height = circle_txt.getLayoutParams().height;
@@ -343,6 +416,10 @@ public class GameNewActivity extends ActionBarActivity {
         circle_txt.setLayoutParams(Params1);
         circle_txt.setGravity(Gravity.CENTER);
         circle_linear.setGravity(Gravity.CENTER);
+        imageButton = (ImageButton) findViewById(R.id.imageButton);
+        for (Word word : wordset.getWords()) {
+            System.out.append(word.getOriginalValue() + ",");
+        }
     }
 
     public void checkIfCharArrayEmpty() {
@@ -410,32 +487,7 @@ public class GameNewActivity extends ActionBarActivity {
         }
     }
 
-
-    public void next_btn(View v) {
-
-        if (currentGame + 1 >= totalGame) {
-            gameCompleted();
-        } else {
-            wordset.getWords().get(currentGame).setChancesTaken(maxChances);
-            currentGame++;
-            displayAllLetters();
-            new CountDownTimer(2000, 1000) {
-
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    // do something after 1s
-                }
-
-                @Override
-                public void onFinish() {
-                    resetAll();
-                    removeTextViews();
-                    setupGame(currentGame);
-                }
-
-            }.start();
-        }
-    }
+    ImageButton imageButton;
 
 
     @Override
@@ -622,17 +674,21 @@ public class GameNewActivity extends ActionBarActivity {
     }
 
     public void testing_btjn(View v) {
-        printCharArray();
-        print("");
-        System.out.println("My Word Array=");
-
-        print("Size of word char " + word_char.size());
-        String s = "";
-        for (int j = 0; j < word_char.size(); j++) {
-            s = s + word_char.get(j);
+        for (Character x : word_char) {
+            checkAlpha(String.valueOf(x));
         }
-        Log.d("word_char", s);
-        Log.d("currentWord", word);
-        Log.d("currentGame", currentGame + "");
+//
+//        printCharArray();
+//        print("");
+//        System.out.println("My Word Array=");
+//
+//        print("Size of word char " + word_char.size());
+//        String s = "";
+//        for (int j = 0; j < word_char.size(); j++) {
+//            s = s + word_char.get(j);
+//        }
+//        Log.d("word_char", s);
+//        Log.d("currentWord", word);
+//        Log.d("currentGame", currentGame + "");
     }
 }

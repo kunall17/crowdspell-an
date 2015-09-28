@@ -125,8 +125,7 @@
             android:id="@+id/button"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/imageButton2"
-            android:onClick="testing_btjn"
-            android:visibility="invisible" />
+            android:onClick="testing_btjn" />
 
     </LinearLayout>
 

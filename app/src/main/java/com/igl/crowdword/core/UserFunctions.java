@@ -57,7 +57,8 @@ public class UserFunctions {
         us.setSalt(sp.getString("salt", ""));
         us.setToken(sp.getString("token", ""));
         us.setId(asd);
-        us.setJoiningDate(java.sql.Date.valueOf(sp.getString("joiningDate", "")));
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        us.setJoiningDate(java.sql.Date.valueOf(date));
 
         UserDetails usd = new UserDetails();
 
@@ -86,24 +87,28 @@ public class UserFunctions {
         return dateObj;
     }
 
+    public String insertBlankValueIfNull(String text) {
+        if (text == null) {
+            return "";
+        }
+        return text;
+    }
+
     public void saveToSharedPreferences(User user, Context context) {
         SharedPreferences sp = getShared(context);
         SharedPreferences.Editor spe = sp.edit();
 
         try {
-
-            spe.putString("username", user.getUsername());
-            spe.putString("password", user.getPassword());
-            spe.putString("authProvider", user.getAuthenticationProvider());
-            spe.putString("salt", user.getSalt());
-            spe.putString("token", user.getToken());
-            if (user.getId() != null) spe.putLong("id", user.getId());
-            if (user.getJoiningDate() != null)
-                spe.putString("joiningDate", user.getJoiningDate().toString());
-
+            spe.putString("username", insertBlankValueIfNull(user.getUsername()));
+            spe.putString("password", insertBlankValueIfNull(user.getPassword()));
+            spe.putString("authProvider", insertBlankValueIfNull(user.getAuthenticationProvider()));
+            spe.putString("salt", insertBlankValueIfNull(user.getSalt()));
+            spe.putString("token", insertBlankValueIfNull(user.getToken()));
+            spe.putLong("id", Long.valueOf(insertBlankValueIfNull(user.getId().toString())));
+            spe.putString("joiningDate", insertBlankValueIfNull(user.getJoiningDate().toString()));
             //Insert UserDetails
-            spe.putString("email", user.getDetails().getEmail());
-            spe.putString("platform", user.getDetails().getPlatform());
+            spe.putString("email", insertBlankValueIfNull(user.getDetails().getEmail()));
+            spe.putString("platform", insertBlankValueIfNull(user.getDetails().getPlatform()));
             spe.commit();
         } catch (Exception e) {
             Log.d("exception-error", e.toString());
@@ -116,14 +121,14 @@ public class UserFunctions {
     public Boolean checkIfSharedPreferencesforUserExists(Context context) {
         Boolean asd = false;
         SharedPreferences sp = getShared(context);
-        if (sp.contains(context.getResources().getString(R.string.SP_APPID).toString())) {
+        if (sp.contains("username")) {
             asd = true;
             //Indicate that the default shared prefs have been set
         }
         return asd;
     }
 
-    public String checkIfShared(Context context) {
+    public String getCurrentUsername(Context context) {
         Boolean asd = false;
         SharedPreferences sp = getShared(context);
         if (!sp.contains("username")) {
@@ -152,8 +157,8 @@ public class UserFunctions {
     public Boolean checkIfGuestModeIsOn(Context context) {
         Boolean asd = false;
         SharedPreferences spe = getShared(context);
-        String d = spe.getString("id", "");
-        if (d == context.getResources().getString(R.string.guestmode)) {
+        Long d = spe.getLong("id", Long.valueOf(0));
+        if (d == Long.valueOf(context.getResources().getString(R.string.guestmode))) {
             asd = true;
         }
         return asd;
@@ -161,6 +166,12 @@ public class UserFunctions {
 
     public void saveAsGuest(Context context) {
         User user = new User();
+        user.setUsername("Guest");
+
+        String date = new SimpleDateFormat("yyyy-MM-dd").format(new Date());
+        user.setJoiningDate(java.sql.Date.valueOf(date));
+        UserDetails ud = new UserDetails();
+        user.setDetails(ud);
         user.setId(Long.valueOf(context.getResources().getString(R.string.guestmode)));
         user.setJoiningDate(getCurrentDate());
         saveToSharedPreferences(user, context);

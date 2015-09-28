@@ -1,87 +1,46 @@
 package com.igl.crowdword;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.support.annotation.RequiresPermission;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.*;
-import android.support.v4.app.ListFragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.internal.view.ContextThemeWrapper;
-import android.support.v7.internal.widget.AdapterViewCompat;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Adapter;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
 import com.igl.crowdword.HTTPRequest.GameManager;
 import com.igl.crowdword.HTTPRequest.UserManager;
 import com.igl.crowdword.core.UserFunctions;
-import com.igl.crowdword.fxns.Tag;
-import com.igl.crowdword.fxns.Word;
+import com.igl.crowdword.fxns.User;
 import com.igl.crowdword.fxns.WordSet;
 import com.igl.crowdword.fxns.analysis.UserPoints;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 
 public class DashboardActivity extends ActionBarActivity {
 
 
-    public static final String ARG_BUNDLE = "arg_bundle" ;
+    public static final String ARG_BUNDLE = "arg_bundle";
     private Toolbar toolbar;
     private NavigationView navigationView;
     private DrawerLayout drawerLayout;
@@ -97,6 +56,7 @@ public class DashboardActivity extends ActionBarActivity {
     public android.support.v4.app.Fragment frag1;
     public android.support.v4.app.Fragment frag2;
     public android.support.v4.app.Fragment frag3;
+    User currentUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,19 +66,19 @@ public class DashboardActivity extends ActionBarActivity {
         setContentView(R.layout.activity_dashboard);
         context = this;
 
-        fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent in1 = new Intent(DashboardActivity.this, CreateSetActivity.class);
-                startActivity(in1);
-
-            }
-        });
+//        fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent in1 = new Intent(DashboardActivity.this, CreateSetActivity.class);
+//                startActivity(in1);
+//
+//            }
+//        });
 
         frag1 = new com.igl.crowdword.SetsFragment();
-        frag2 = new com.igl.crowdword.ListFragment();
-        frag3 = new com.igl.crowdword.ListFragment();
+        frag2 = new TopFragment();
+        frag3 = new FavouritesFragment();
 
         viewpager = (ViewPager) findViewById(R.id.pager);
         tablayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -126,26 +86,21 @@ public class DashboardActivity extends ActionBarActivity {
 
         MyAdapter = new pagerAdapter(getSupportFragmentManager());
 
-        Bundle args = new Bundle();
-        Bundle args1 = new Bundle();
 
-        args.putInt(ARG_BUNDLE, 1);
-        args1.putInt(ARG_BUNDLE, 2);
-
-        frag2.setArguments(args);
-        frag3.setArguments(args1);
 
         MyAdapter.addFragment(frag1, "All Sets");
-        MyAdapter.addFragment(frag2, "LeaderBoard");
-       MyAdapter.addFragment(frag3, "Favourites");
+        MyAdapter.addFragment(frag2, "Top");
+        MyAdapter.addFragment(frag3, "Favourites");
 
         viewpager.setAdapter(MyAdapter);
         tablayout.setTabsFromPagerAdapter(MyAdapter);
         viewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tablayout));
 
+        currentUser = new UserFunctions().getCurrentUser(getBaseContext());
+        Toast.makeText(DashboardActivity.this, "Logged in as" + currentUser.getUsername(), Toast.LENGTH_LONG).show();
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_dashboard);
-        toolbar.setTitle("DashBoard");
+        toolbar.setTitle("Home");
 
         setSupportActionBar(toolbar);
         //Initializing NavigationView
@@ -266,9 +221,6 @@ public class DashboardActivity extends ActionBarActivity {
         actionBarDrawerToggle.syncState();
 
 
-
-
-
     }
 
     @Override
@@ -355,7 +307,7 @@ public class DashboardActivity extends ActionBarActivity {
             super(fm);
         }
 
-        public void addFragment(android.support.v4.app.Fragment   fragment, String title) {
+        public void addFragment(android.support.v4.app.Fragment fragment, String title) {
             FragmentList.add(fragment);
             FragmentTitles.add(title);
         }

@@ -2,10 +2,13 @@ package com.igl.crowdword.HTTPRequest;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import com.google.gson.Gson;
+import com.igl.crowdword.R;
 import com.igl.crowdword.core.UserFunctions;
 import com.igl.crowdword.fxns.User;
+import com.igl.crowdword.fxns.Word;
 import com.igl.crowdword.fxns.WordSet;
 import com.igl.crowdword.fxns.analysis.SetScoreCarrier;
 import com.igl.crowdword.fxns.analysis.UserPoints;
@@ -13,6 +16,8 @@ import com.igl.crowdword.fxns.analysis.UserPoints;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.List;
@@ -39,10 +44,13 @@ public class GameManager extends NetworkManager {
                 HttpURLConnection connection = getConnection(ApiPaths.SETS + "/" + ApiPaths.SORT_NEW);
                 Gson gson = getJsonWriterWithCustomDate();
                 String output = readFromConnection(connection);
+                Log.d("WORDSETS", output);
+                int code = connection.getResponseCode();
+                Log.d("Code", code + "");
                 WordSet[] sets = gson.fromJson(output, WordSet[].class);
                 return Arrays.asList(sets);
             } catch (Exception e) {
-
+                Log.d("getAllSetsAsyncError", e.toString());
             }
             return null;
         }
@@ -54,6 +62,50 @@ public class GameManager extends NetworkManager {
 
     }
 
+    public static class getAllSetsAsync2 extends AsyncTask<Context, List<WordSet>, List<WordSet>> {
+
+        @Override
+        protected void onPreExecute() {
+//            updateDisplay("Starting task");
+        }
+
+        @Override
+        protected List<WordSet> doInBackground(Context... params) {
+            URL url;
+            try {
+
+                url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/sets/new");
+
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+                con.setRequestProperty(ApiPaths.APP_AUTH_KEY,
+                        ApiPaths.ANDROID_APP_KEY);
+                con.connect();
+
+                int code = con.getResponseCode();
+                Log.d("Code", code + "");
+//           HttpURLConnection connection = getConnection(ApiPaths.SETS + "/" + ApiPaths.SORT_NEW);
+                String output = readFromConnection(con);
+                Gson gson = getJsonWriterWithCustomDate();
+                WordSet[] sets = gson.fromJson(output, WordSet[].class);
+                return Arrays.asList(sets);
+
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+
+        protected void onPostExecute(String result) {
+            System.out.println("Result is here:-" + result);
+        }
+
+    }
 
     public static class getWordSetAsync extends AsyncTask<Long, List<WordSet>, WordSet> {
 
@@ -128,7 +180,7 @@ public class GameManager extends NetworkManager {
 
             UserFunctions us = new UserFunctions();
             WordSet set = params[0];
-          //TODO  set.setUserToken(us.getCurrentToken());
+            //TODO  set.setUserToken(us.getCurrentToken());
             HttpURLConnection connection = null;
             int code = 0;
             try {
@@ -206,9 +258,17 @@ public class GameManager extends NetworkManager {
         protected List<UserPoints> doInBackground(String... params) {
 
             try {
-                HttpURLConnection connection = getConnection(ApiPaths.SCORES);
+               URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/scores");
+
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+                con.setRequestProperty(ApiPaths.APP_AUTH_KEY,
+                        ApiPaths.ANDROID_APP_KEY);
+                con.connect();
+
+//                HttpURLConnection connection = getConnection(ApiPaths.SCORES);
                 String content = null;
-                content = readFromConnection(connection);
+                content = readFromConnection(con);
                 Gson gson = getJsonWriterWithCustomDate();
                 UserPoints[] userPoints = gson.fromJson(content, UserPoints[].class);
                 return Arrays.asList(userPoints);
@@ -216,7 +276,7 @@ public class GameManager extends NetworkManager {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-return null;
+            return null;
         }
 
 

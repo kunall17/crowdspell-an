@@ -35,22 +35,20 @@ public class NetworkManager {
         // Change URL here.
 
         String urla = String.valueOf(R.string.SERVER_ADDRESS).toString();
-        URL url = new URL(urla
-                + extension);
+        URL url = new URL(urla + extension);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestProperty(ApiPaths.APP_AUTH_KEY,
-                ApiPaths.ANDROID_APP_KEY);
-        connection.setDoInput(true);
-        connection.setDoOutput(true);
-        return connection;
+        connection.setRequestProperty(ApiPaths.APP_AUTH_KEY, ApiPaths.ANDROID_APP_KEY);
+//        connection.setDoInput(true);
+//        connection.setDoOutput(true);
+
+ return connection;
     }
 
     protected static HttpURLConnection getPostConnection(String path)
             throws IOException {
         HttpURLConnection connection = getBaseConnection(path);
         connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type",
-                "application/json; charset=UTF-8");
+        connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
         return connection;
     }
 
@@ -85,7 +83,7 @@ public class NetworkManager {
         return response.toString();
     }
 
-    protected static Gson getJsonWriterWithCustomDate(){
+    protected static Gson getJsonWriterWithCustomDate() {
         Gson gson = new GsonBuilder()
                 .setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
         return gson;
