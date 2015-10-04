@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.igl.crowdword.R;
+import com.igl.crowdword.SetsFragment;
 import com.igl.crowdword.core.UserFunctions;
 import com.igl.crowdword.fxns.User;
 import com.igl.crowdword.fxns.Word;
@@ -13,7 +14,10 @@ import com.igl.crowdword.fxns.WordSet;
 import com.igl.crowdword.fxns.analysis.SetScoreCarrier;
 import com.igl.crowdword.fxns.analysis.UserPoints;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -73,6 +77,7 @@ public class GameManager extends NetworkManager {
         protected List<WordSet> doInBackground(Context... params) {
             URL url;
             try {
+                context = params[0];
 
                 url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/sets/new");
 
@@ -100,9 +105,10 @@ public class GameManager extends NetworkManager {
             return null;
         }
 
+        Context context;
 
-        protected void onPostExecute(String result) {
-            System.out.println("Result is here:-" + result);
+        protected void onPostExecute(List<WordSet> result) {
+//            System.out.println("Result is here:-" + result);
         }
 
     }
@@ -212,20 +218,71 @@ public class GameManager extends NetworkManager {
 
         @Override
         protected Integer doInBackground(SetScoreCarrier... params) {
+            int status = 0;
+            String finalString;
+            SetScoreCarrier ssc = params[0];
+            String result = null;
+            int code = 0;
+            BufferedReader rdr = null;
 
+            Gson gson = new Gson();
+            result = gson.toJson(ssc);
             try {
+                URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/" + ApiPaths.SCORES);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setDoOutput(true);
+                con.setRequestMethod("POST");
+                con.setRequestProperty("Content-Type", "application/json");
+                con.setRequestProperty("Accept", "application/json");
+                // con.setRequestProperty("app-id", "4b08dee3-c8ec-40a0-99d1-4aee47c0772a");
+                con.addRequestProperty("app-id", "4b08dee3-c8ec-40a0-99d1-4aee47c0772a");
+                con.connect();
 
-                SetScoreCarrier carrier = params[0];
-                Gson gson = getJsonWriterWithCustomDate();
-                String objStr = gson.toJson(carrier);
-                HttpURLConnection connection = getPostConnection(ApiPaths.SCORES);
-                writeToOutputStream(connection, objStr);
-                int code = connection.getResponseCode();
-                return code;
-            } catch (IOException e) {
-                e.printStackTrace();
+                StringBuilder sb = new StringBuilder();
+
+
+                DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+                wr.writeBytes(result);
+                wr.flush();
+                wr.close();
+                status = con.getResponseCode();
+                System.out.println(" received " + status);
+
+                rdr = new BufferedReader(new InputStreamReader(con.getInputStream()));
+
+                String line;
+
+                while ((line = rdr.readLine()) != null) {
+                    sb.append(line);
+                }
+                finalString = sb.toString();
+
+                code = status;
+                System.out.println(result);
+                if (status == R.string.EXISTING_RESOURCE) {
+                    return (status);
+                    //throw new NetworkException("Sorry! that username is already taken.");
+                } else if (status == R.string.BAD_REQUEST) {
+                    return (status);
+                    //   throw new NetworkException("The username or password did not match.");
+                } else if (status == R.string.OK) {
+                    System.out.println("Status code=" + 200);
+                    return 0;
+                }
+            } catch (Exception e) {
+                finalString = e.toString();
+                System.out.println("Exception Aa gaya-" + e.toString());
+            } finally {
+                if
+                        ((rdr != null))
+
+                    try {
+                        rdr.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
             }
-            return 0;
+            return code;
         }
 
 
@@ -258,7 +315,7 @@ public class GameManager extends NetworkManager {
         protected List<UserPoints> doInBackground(String... params) {
 
             try {
-               URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/scores");
+                URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/scores");
 
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("GET");

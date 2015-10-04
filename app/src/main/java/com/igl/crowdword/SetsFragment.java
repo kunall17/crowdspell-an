@@ -73,7 +73,7 @@ public class SetsFragment extends android.support.v4.app.Fragment {
 
     WordSet wordset = null;
     List<WordSet> Wordset = null;
-    List<WordSet> wordset_list = null;
+    static List<WordSet> wordset_list = null;
     List<WordSet> backup_wordset_list = null;
     ArrayAdapter<String> spn_adapter;
     ArrayAdapter<String> mainListViewAdapter;
@@ -243,19 +243,24 @@ public class SetsFragment extends android.support.v4.app.Fragment {
 
     }
 
-    public void surpirse() {
-
-    }
-
     View rootView;
 
     public void initializeList() {
         Log.d("Initialing list called", "called");
         String json1 = "";
         wordset_list = new ArrayList<WordSet>();
+        UserFunctions.checkInternetConnectionAsync checkInternet = new UserFunctions.checkInternetConnectionAsync();
+        Boolean internet = false;
+        try {
+            internet = checkInternet.execute(getActivity()).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
 
         if (UserFunctions.checkForServer(getActivity()) == true) {
-            if (new UserFunctions().checkInternetConnection(getActivity()) == false) {
+            if (internet == false) {
                 Toast.makeText(getActivity(), "Please check your Internet Connection", Toast.LENGTH_LONG).show();
                 return;
             }
@@ -263,7 +268,7 @@ public class SetsFragment extends android.support.v4.app.Fragment {
             GameManager.getAllSetsAsync2 asd = new GameManager.getAllSetsAsync2();
             try {
                 if (getResources().getString(R.string.SERVER_ADDRESS) == getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
-                    if (new UserFunctions().checkInternetConnection(getActivity()) == false) {
+                    if (internet == false) {
                         Toast.makeText(getActivity(), "Please check your Internet Connection", Toast.LENGTH_LONG).show();
                         return;
                     }
@@ -300,6 +305,7 @@ public class SetsFragment extends android.support.v4.app.Fragment {
 
     }
 
+
     public void setListDisplay() {
         String[] nameArray = new String[wordset_list.size()];
         for (int i = 0; i < wordset_list.size(); i++) {
@@ -317,6 +323,7 @@ public class SetsFragment extends android.support.v4.app.Fragment {
         rootView = inflater.inflate(R.layout.fragment_sets, container, false);
         listview_games = (ListView) rootView.findViewById(R.id.game_list);
         setListDisplay();
+        if (savedInstanceState == null)
 //
 //        srl = (SwipeRefreshLayout) rootView.findViewById(R.id.refreshSwipe_list);
 //        srl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -331,13 +338,13 @@ public class SetsFragment extends android.support.v4.app.Fragment {
 //
 //
 
-        listview_games.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //Implement code for navigation to play game
-                startGame(position);
-            }
-        });
+            listview_games.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    //Implement code for navigation to play game
+                    startGame(position);
+                }
+            });
 //
 //
 ////Added Newwly

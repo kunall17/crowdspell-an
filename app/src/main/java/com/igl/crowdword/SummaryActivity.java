@@ -1,5 +1,6 @@
 package com.igl.crowdword;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.igl.crowdword.HTTPRequest.GameManager;
 import com.igl.crowdword.R;
+import com.igl.crowdword.core.UserFunctions;
 import com.igl.crowdword.fxns.Word;
 import com.igl.crowdword.fxns.WordSet;
 import com.igl.crowdword.fxns.analysis.SetScoreCarrier;
@@ -52,18 +54,21 @@ public class SummaryActivity extends ActionBarActivity {
         String s = "";
         String words_lost[] = getIntent().getStringArrayExtra("words_lost");
         for (int i = 0; i < words_lost.length; i++) {
-            if ( words_lost[i] != null) words_name.add(words_lost[i]);
+            if (words_lost[i] != null) words_name.add(words_lost[i]);
 //            s = s + word.getChancesTaken() + ",";
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words_name);
         listView.setAdapter(adapter);
-        for (Word word : words) {
 
-        }
         toolbar.setTitle("Summary");
 
         Log.d("chancesTaken", s);
-        submitScore(ssc);
+
+        if (new UserFunctions().checkIfGuestModeIsOn(getBaseContext())) {
+            Toast.makeText(SummaryActivity.this, "You are guest your scores aren't saved!", Toast.LENGTH_LONG).show();
+        } else {
+            submitScore(ssc);
+        }
 
     }
 
@@ -80,6 +85,9 @@ public class SummaryActivity extends ActionBarActivity {
         Log.d("Score", code + "");
         if (code < 300 && code > 199) {
             Toast.makeText(SummaryActivity.this, "Saved Your Score", Toast.LENGTH_LONG).show();
+        } else {
+            submitScore(ssc);
+            Log.d("submitScore", "Some problem is coming");
         }
     }
 
@@ -107,5 +115,7 @@ public class SummaryActivity extends ActionBarActivity {
 
     public void backtoDash_btn(View v) {
         finish();
+        Intent in1 = new Intent(SummaryActivity.this, DashboardActivity.class);
+        startActivity(in1);
     }
 }

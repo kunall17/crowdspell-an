@@ -12,10 +12,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.igl.crowdword.HTTPRequest.GameManager;
 import com.igl.crowdword.HTTPRequest.UserManager;
 import com.igl.crowdword.core.UserFunctions;
 import com.igl.crowdword.fxns.User;
 import com.igl.crowdword.fxns.UserDetails;
+import com.igl.crowdword.fxns.analysis.SetScoreCarrier;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -85,9 +87,16 @@ public class LoginActivity extends ActionBarActivity {
         UserFunctions usf = new UserFunctions();
 
         if (getResources().getString(R.string.SERVER_ADDRESS) == getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
-            if (new UserFunctions().checkInternetConnection(this) == false) {
-                Toast.makeText(this, "Please check your Internet Connection", Toast.LENGTH_LONG).show();
-                return;
+            UserFunctions.checkInternetConnectionAsync checkInternet = new UserFunctions.checkInternetConnectionAsync();
+            try {
+                if (checkInternet.execute(getBaseContext()).get() == true) {
+                    Toast.makeText(this, "Please check your Internet Connection", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
             User user = new User();
             UserDetails ud = new UserDetails();
@@ -126,6 +135,8 @@ public class LoginActivity extends ActionBarActivity {
     }
 
     public void newUser_click(View v) {
+
+
         Intent intent = new Intent(this, newUserActivity.class);
         startActivity(intent);
     }

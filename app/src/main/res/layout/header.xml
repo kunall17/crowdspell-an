@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="256dp"
-    android:background="@drawable/header_bg"
+    android:layout_height="wrap_content"
     android:alpha="0.8"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:paddingTop="16dp">
 
     <TextView
+        android:id="@+id/username_drawer_txt"
+        style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:gravity="center_vertical|right"
         android:padding="16dp"
-        android:gravity="right"
-        style="@style/TextAppearance.AppCompat.Title"
         android:text="Kunal Gupta"
-        android:id="@+id/username_drawer_txt"/>
+        android:background="@color/ColorPrimary"
+        android:textSize="25sp"
+        android:nestedScrollingEnabled="false"
+        android:textAlignment="center" />
 </FrameLayout>
 

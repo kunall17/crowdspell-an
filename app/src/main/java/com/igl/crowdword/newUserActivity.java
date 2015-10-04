@@ -16,9 +16,10 @@ import com.igl.crowdword.fxns.User;
 
 import java.io.IOException;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
 
 public class newUserActivity extends ActionBarActivity {
-//TODO Make UI BETTER
+    //TODO Make UI BETTER
     EditText un_et;
     EditText pwd_et;
     EditText mail_et;
@@ -30,7 +31,7 @@ public class newUserActivity extends ActionBarActivity {
         setContentView(R.layout.activity_new_user);
 
         un_et = (EditText) findViewById(R.id.userName_ET);
-        pwd_et= (EditText) findViewById(R.id.password_ET);
+        pwd_et = (EditText) findViewById(R.id.password_ET);
         mail_et = (EditText) findViewById(R.id.email_ET);
     }
 
@@ -56,12 +57,19 @@ public class newUserActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void createNewUser_Click(View v){
-        if (new UserFunctions().checkInternetConnection(this) == false) {
-            Toast.makeText(this, "Please check your Internet Connection", Toast.LENGTH_LONG).show();
-            return;
+    public void createNewUser_Click(View v) {
+        UserFunctions.checkInternetConnectionAsync checkInternet = new UserFunctions.checkInternetConnectionAsync();
+        try {
+            if (checkInternet.execute(getBaseContext()).get() == false) {
+                Toast.makeText(this, "Please check your Internet Connection", Toast.LENGTH_LONG).show();
+                return;
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
         }
-        Date d=new Date();
+        Date d = new Date();
 
         User newUser = new User();
         UserDetails newUserDetails = new UserDetails();
@@ -73,13 +81,24 @@ public class newUserActivity extends ActionBarActivity {
         newUser.setJoiningDate(d);
         newUserDetails.setPlatform(String.valueOf(R.string.PLATFORM_ANDROID));
         newUser.setDetails(newUserDetails);
+        String token = "";
 
-//        try {
-//            UserManager.createUserAsync cua = new UserManager.createUserAsync();
-//            //TODO     String asd = cua.execute(newUser);
-//        }
+        try {
+            UserManager.createUserAsync cua = new UserManager.createUserAsync();
+            token = cua.execute(newUser).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        if (token != null) {
+            Toast.makeText(newUserActivity.this, "User Created", Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(newUserActivity.this, "Error Occured", Toast.LENGTH_LONG).show();
         }
     }
+}
 
 
 

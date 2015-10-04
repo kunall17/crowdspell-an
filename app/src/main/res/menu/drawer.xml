@@ -4,14 +4,16 @@
         android:id="@+id/drawer_home"
         android:checked="false"
         android:title="Home" />
+
     <group
         android:id="@+id/group_1"
         android:checkableBehavior="single">
 
-        <item
+        <!--<item
             android:id="@+id/drawer_profile"
             android:checked="false"
             android:title="@string/drawer_menu_profile" />
+        -->
         <item
             android:id="@+id/drawer_create"
             android:checked="false"
@@ -24,31 +26,40 @@
             android:id="@+id/drawer_leaderboard"
             android:checked="false"
             android:title="@string/drawer_menu_leaderboard" />
-        <item
-            android:id="@+id/drawer_filter"
-            android:checked="false"
-            android:title="@string/drawer_menu_leaderboard" />
+        <!--        <item
+                    android:id="@+id/drawer_filter"
+                    android:checked="false"
+                    android:title="@string/drawer_menu_leaderboard" />
+            -->
     </group>
-    <group
-        android:id="@+id/group_2"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/drawer_rated"
-            android:checked="false"
-            android:title="@string/drawer_menu_rated" />
-        <item
-            android:id="@+id/drawer_popular"
-            android:checked="false"
-            android:title="@string/drawer_menu_popular" />
+    <!-- <group
+         android:id="@+id/group_2"
+         android:checkableBehavior="single">
+         <item
+             android:id="@+id/drawer_rated"
+             android:checked="false"
+             android:title="@string/drawer_menu_rated" />
+         <item
+             android:id="@+id/drawer_popular"
+             android:checked="false"
+             android:title="@string/drawer_menu_popular" />
 
-    </group>
+     </group>
+ -->
     <group
         android:id="@+id/group_3"
         android:checkableBehavior="single">
         <item
+            android:id="@+id/drawer_help"
+            android:checked="false"
+            android:title="Help" />
+        <item
+            android:id="@+id/drawer_create_user"
+            android:checked="false"
+            android:title="Create User" />
+        <item
             android:id="@+id/drawer_exit"
             android:checked="false"
-            android:icon="@drawable/ic_delete_black"
             android:title="@string/drawer_menu_exit" />
 
     </group>

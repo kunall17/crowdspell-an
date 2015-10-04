@@ -4,17 +4,26 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.igl.crowdword.HTTPRequest.ApiPaths;
 import com.igl.crowdword.R;
 import com.igl.crowdword.fxns.User;
 import com.igl.crowdword.fxns.UserDetails;
+import com.igl.crowdword.fxns.WordSet;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by MAHE on 9/6/2015.
@@ -29,21 +38,35 @@ public class UserFunctions {
         return asd;
     }
 
+    public static class checkInternetConnectionAsync extends AsyncTask<Context, Boolean,Boolean> {
 
-    public Boolean checkInternetConnection(Context _context) {
-        // get Connectivity Manager object to check connection
-        ConnectivityManager connectivity = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivity != null) {
-            NetworkInfo[] info = connectivity.getAllNetworkInfo();
-            if (info != null)
-                for (int i = 0; i < info.length; i++)
-                    if (info[i].getState() == NetworkInfo.State.CONNECTED) {
-                        return true;
-                    }
-
+        @Override
+        protected void onPreExecute() {
+//            updateDisplay("Starting task");
         }
-        return false;
+
+        @Override
+        protected Boolean doInBackground(Context... params) {
+            try {
+                HttpURLConnection urlc = (HttpURLConnection) (new URL("http://www.google.com").openConnection());
+                urlc.setRequestProperty("User-Agent", "Test");
+                urlc.setRequestProperty("Connection", "close");
+                urlc.setConnectTimeout(1500);
+                urlc.connect();
+                if(  urlc.getResponseCode() == 200) return true;
+            } catch (IOException e) {
+                Log.e("not-working", "Error checking internet connection", e);
+            }
+            return false;
+        }
+
+
+        protected void onPostExecute(List<WordSet> result) {
+            System.out.println("Result is here:-" + result);
+        }
+
     }
+
 
     //TODO getCurrent User
     public User getCurrentUser(Context context) {

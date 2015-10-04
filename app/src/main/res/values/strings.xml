@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">CrowdWord</string>
+    <string name="app_name">Crowdspell</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -26,7 +26,7 @@
 
     //Server Adresses.!
     //
-    <string name="SERVER_ADDRESS1">http://localhost/</string>
+    <string name="SERVER_ADDRESS1">http://localhost</string>
     <string name="SERVER_ADDRESS">http://46.101.37.183:8080/crowdspell-web/api/v1/</string>
     <string name="SERVER_ADDRESS_USER">users</string>
     <string name="SERVER_ADDRESS_SETS">sets</string>

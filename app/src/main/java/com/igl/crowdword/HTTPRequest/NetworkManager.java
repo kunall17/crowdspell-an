@@ -37,18 +37,21 @@ public class NetworkManager {
         String urla = String.valueOf(R.string.SERVER_ADDRESS).toString();
         URL url = new URL(urla + extension);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestProperty(ApiPaths.APP_AUTH_KEY, ApiPaths.ANDROID_APP_KEY);
+        connection.addRequestProperty(ApiPaths.APP_AUTH_KEY, ApiPaths.ANDROID_APP_KEY);
 //        connection.setDoInput(true);
 //        connection.setDoOutput(true);
 
- return connection;
+        return connection;
     }
 
     protected static HttpURLConnection getPostConnection(String path)
             throws IOException {
         HttpURLConnection connection = getBaseConnection(path);
+        connection.setDoOutput(true);
         connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
+        connection.setRequestProperty("connectiontent-Type", "application/json");
+        connection.setRequestProperty("Accept", "application/json");
+        // connection.setRequestProperty("app-id", "4b08dee3-c8ec-40a0-99d1-4aee47c0772a");
         return connection;
     }
 

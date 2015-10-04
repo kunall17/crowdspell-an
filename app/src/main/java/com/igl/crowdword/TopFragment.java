@@ -102,7 +102,10 @@ public class TopFragment extends android.support.v4.app.Fragment {
             try {
                 GameManager.getAllTopScoresAsync gat = new GameManager.getAllTopScoresAsync();
                 if (getResources().getString(R.string.SERVER_ADDRESS) == getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
-                    if (new UserFunctions().checkInternetConnection(getActivity()) == false) {
+                    UserFunctions.checkInternetConnectionAsync checkInternet = new UserFunctions.checkInternetConnectionAsync();
+                   Boolean internet = checkInternet.execute(getActivity()).get();
+
+                    if (internet == false ) {
                         Toast.makeText(getActivity(), "Please check your Internet Connection", Toast.LENGTH_LONG).show();
                         return;
                     }

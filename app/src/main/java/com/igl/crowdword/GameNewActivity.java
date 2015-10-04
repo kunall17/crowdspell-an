@@ -23,9 +23,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.igl.crowdword.HTTPRequest.UserManager;
+import com.igl.crowdword.core.UserFunctions;
+import com.igl.crowdword.fxns.User;
 import com.igl.crowdword.fxns.Word;
 import com.igl.crowdword.fxns.WordSet;
 import com.igl.crowdword.fxns.analysis.SetScoreCarrier;
+import com.igl.crowdword.fxns.analysis.UserFavourites;
+import com.igl.crowdword.fxns.analysis.WordSetVote;
 
 import java.io.CharArrayReader;
 import java.util.ArrayList;
@@ -33,6 +38,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
 
 public class GameNewActivity extends ActionBarActivity {
 
@@ -48,6 +54,7 @@ public class GameNewActivity extends ActionBarActivity {
     int attempts = 0;
     TextView title_tv;
     TextView progress_tv;
+    List<String> wordsLost;
 
     TextView[] myTextViews = new TextView[20]; // create an empty array;
 
@@ -72,6 +79,7 @@ public class GameNewActivity extends ActionBarActivity {
     Button right;
     Button middle;
     String words_lost[];
+    List<WordSet> sets_fav_list = null;
 
     public void print(String text) {
         System.out.println(text);
@@ -112,30 +120,48 @@ public class GameNewActivity extends ActionBarActivity {
 
     }
 
+    public void favourite_btn(View v) {
+        UserFunctions uf = new UserFunctions();
+        String token = uf.getCurrentToken(getBaseContext());
+
+        UserManager.addUserFavouritesAsync asd = new UserManager.addUserFavouritesAsync();
+
+        try {
+            if (getResources().getString(R.string.SERVER_ADDRESS) == getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
+                UserFunctions.checkInternetConnectionAsync checkInternet = new UserFunctions.checkInternetConnectionAsync();
+                if (checkInternet.execute(getBaseContext()).get() == true) {
+                    Toast.makeText(getBaseContext(), "Please check your Internet Connection", Toast.LENGTH_LONG).show();
+                    return;
+                }
+
+                WordSetVote setvote = new WordSetVote();
+                setvote.setUser(new UserFunctions().getCurrentUser(getBaseContext()));
+                setvote.setId(wordset.getId());
+                int code = asd.execute(setvote).get();
+                if (code < 300 && code > 199) {
+                    ImageButton ib = (ImageButton) findViewById(R.id.favourite_btn);
+                    ib.setBackgroundResource(R.drawable.ic_action_important);
+
+                }
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+
     private void win() {
         Toast.makeText(this, "Fuck You won.!", Toast.LENGTH_LONG);
         words_won++;
         if (currentGame + 1 == wordset.getWords().size()) {
             wordset.getWords().get(currentGame).setChancesTaken(maxChances);
-            words_lost[currentGame] = word;
+//            words_lost[currentGame] = word;
             currentGame++;
             displayAllLetters();
+            UserFavourites asd;
 
-
-            new CountDownTimer(2000, 1000) {
-
-                @Override
-                public void onTick(long millisUntilFinished) {
-                    // do something after 1s
-                }
-
-                @Override
-                public void onFinish() {
-                    gameCompleted();
-
-                }
-
-            }.start();
+            gameCompleted();
         } else {
 
             if (wrong > maxChances) {
@@ -169,6 +195,10 @@ public class GameNewActivity extends ActionBarActivity {
 
 
         }
+    }
+
+    public void help_btn(View v) {
+        Snackbar.make(v, "Click on the right option!", Snackbar.LENGTH_LONG).setAction("DISMISS", null).show();
     }
 
     public void next_btn(View v) {
@@ -357,6 +387,7 @@ public class GameNewActivity extends ActionBarActivity {
         } else {
             wrong += 1;
             updateColor();
+            updateStatus();
         }
 
         attempts++;
@@ -369,8 +400,6 @@ public class GameNewActivity extends ActionBarActivity {
         Button b = (Button) findViewById(v.getId());
         s = b.getText().toString();
         System.out.println("ASDASD");
-
-
         checkAlpha(s);
         if (word_char.size() > 0) {
             print("Superbackchodi here");
@@ -398,7 +427,7 @@ public class GameNewActivity extends ActionBarActivity {
         Gson gson = new Gson();
         wordset = gson.fromJson(json_new, WordSet.class);
         getWindow().setTitle(wordset.getName());
-
+        wordsLost = new ArrayList<String>();
         int noOfWords = wordset.getWords().size();
 
         title_tv = (TextView) findViewById(R.id.title_TV);
@@ -412,7 +441,7 @@ public class GameNewActivity extends ActionBarActivity {
         TextView circle_txt = (TextView) findViewById(R.id.circle_txt);
         int height = circle_txt.getLayoutParams().height;
 
-        LinearLayout.LayoutParams Params1 = new LinearLayout.LayoutParams(height, height);
+        LinearLayout.LayoutParams Params1 = new LinearLayout.LayoutParams(height * 2 / 3, height * 2 / 3);
         circle_txt.setLayoutParams(Params1);
         circle_txt.setGravity(Gravity.CENTER);
         circle_linear.setGravity(Gravity.CENTER);
@@ -420,6 +449,8 @@ public class GameNewActivity extends ActionBarActivity {
         for (Word word : wordset.getWords()) {
             System.out.append(word.getOriginalValue() + ",");
         }
+
+
     }
 
     public void checkIfCharArrayEmpty() {
@@ -545,8 +576,10 @@ public class GameNewActivity extends ActionBarActivity {
     void setupGame(int gameIndex) {
         List<Character> char_array = new ArrayList<Character>(Arrays.asList(new Character[]{'Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A', '1', '2', '3', '4', '5', '6', '7', '8', '9'}));
 
-        if (currentGame > 1) {
+        if (currentGame != 0) {
             removeTextViews();
+            updateColor();
+            updateStatus();
         }
         word = wordset.getWords().get(gameIndex).getOriginalValue();
         word = word.toUpperCase();
@@ -557,7 +590,7 @@ public class GameNewActivity extends ActionBarActivity {
         System.out.println("noAlpha: " + noAlpha);
 
         title_tv.setText(wordset.getName());
-        progress_tv.setText(currentGame + "\\" + totalGame);
+        progress_tv.setText(currentGame + "\\" + (totalGame - 1));
         word_char.removeAll(word_char);
         String phaltu = "";
         for (int i = 0; i < word.length(); i++) {
@@ -588,13 +621,16 @@ public class GameNewActivity extends ActionBarActivity {
             }
             if (char_array.contains(letter.charAt(0)))
                 char_array.remove(char_array.indexOf(letter.charAt(0)));
-            if (word.length() > 10) {
-                rowTextView.setTextSize(15);
-            }
+
 
             rowTextView.setTextSize(25);
             rowTextView.setPadding(10, 0, 10, 0);
             // add the textview to the linearlayout
+            if (word.length() > 10) {
+                rowTextView.setTextSize(20);
+                rowTextView.setPadding(7, 0, 7, 0);
+
+            }
             ll.addView(rowTextView);
 
             // save a reference to the textview for later

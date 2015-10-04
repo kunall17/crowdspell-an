@@ -10,6 +10,7 @@ import com.igl.crowdword.R;
 import com.igl.crowdword.fxns.User;
 import com.igl.crowdword.fxns.WordSet;
 import com.igl.crowdword.fxns.analysis.UserFavourites;
+import com.igl.crowdword.fxns.analysis.WordSetVote;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -59,7 +60,7 @@ public class UserManager extends NetworkManager {
             throws IOException {
     }
 
-    public static class toggleSetVoteAsync extends AsyncTask<UserFavourites, List<WordSet>, Integer> {
+    public static class addUserFavouritesAsync extends AsyncTask<WordSetVote, List<WordSet>, Integer> {
 
         @Override
         protected void onPreExecute() {
@@ -67,13 +68,12 @@ public class UserManager extends NetworkManager {
         }
 
         @Override
-        protected Integer doInBackground(UserFavourites... params) {
+        protected Integer doInBackground(WordSetVote... params) {
             try {
-                UserFavourites favourites = params[0];
-//                favourites.setSetId(wordSetId);
+                WordSetVote setvote = params[0];
                 //              favourites.setUserToken(userToken);
                 Gson gson = new Gson();
-                String json = gson.toJson(favourites);
+                String json = gson.toJson(setvote);
                 HttpURLConnection connection = getPostConnection(ApiPaths.FAVOURITES);
                 writeToOutputStream(connection, json);
                 return connection.getResponseCode();
@@ -115,7 +115,7 @@ public class UserManager extends NetworkManager {
         @Override
         protected List<WordSet> doInBackground(String... params) {
             try {
-               URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/favourites/"+params[0]);
+                URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/favourites/" + params[0]);
 
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("GET");
