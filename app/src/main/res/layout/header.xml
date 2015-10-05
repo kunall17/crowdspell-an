@@ -7,6 +7,19 @@
     android:paddingTop="16dp">
 
     <TextView
+        style="@style/TextAppearance.AppCompat.Title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center_vertical|start"
+        android:padding="16dp"
+        android:text="Crowdspell"
+        android:background="@color/ColorPrimary"
+        android:textSize="18sp"
+        android:nestedScrollingEnabled="false"
+        android:textAlignment="center" />
+
+    <TextView
         android:id="@+id/username_drawer_txt"
         style="@style/TextAppearance.AppCompat.Title"
         android:layout_width="match_parent"
@@ -15,8 +28,7 @@
         android:gravity="center_vertical|right"
         android:padding="16dp"
         android:text="Kunal Gupta"
-        android:background="@color/ColorPrimary"
-        android:textSize="25sp"
+        android:textSize="18sp"
         android:nestedScrollingEnabled="false"
         android:textAlignment="center" />
 </FrameLayout>

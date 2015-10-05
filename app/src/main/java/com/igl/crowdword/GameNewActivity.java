@@ -262,15 +262,20 @@ public class GameNewActivity extends ActionBarActivity {
 
         if (wrong == 1) {
             circle.setColor(Color.argb(255, 241, 196, 15));
+            circle_txt.setText(4+"");
         } else if (wrong == 2) {
             circle.setColor(Color.argb(255, 241, 155, 15));
+            circle_txt.setText(3 + "");
         } else if (wrong == 3) {
             circle.setColor(Color.argb(255, 247, 128, 15));
+            circle_txt.setText(2 + "");
         } else if (wrong == 4) {
             circle.setColor(Color.argb(255, 247, 57, 15));
+            circle_txt.setText(1 + "");
         } else if (wrong == 5) {
             Toast.makeText(this, "You lost this Challenge!", Toast.LENGTH_LONG).show();
             circle.setColor(Color.argb(255, 247, 49, 15));
+            circle_txt.setText(0+"");
         } else if (wrong == 6) {
             circle.setColor(Color.argb(255, 148, 11, 0));
         }
@@ -421,8 +426,8 @@ public class GameNewActivity extends ActionBarActivity {
         left = (Button) findViewById(R.id.left_btn);
         right = (Button) findViewById(R.id.right_btn);
         middle = (Button) findViewById(R.id.middle_btn);
-        String text = getIntent().getStringExtra("wordName");
-        String json_wordset = getIntent().getStringExtra("json_wordset");
+//        String text = getIntent().getStringExtra("wordName");
+//        String json_wordset = getIntent().getStringExtra("json_wordset");
         String json_new = getIntent().getStringExtra("json_new");
         Gson gson = new Gson();
         wordset = gson.fromJson(json_new, WordSet.class);

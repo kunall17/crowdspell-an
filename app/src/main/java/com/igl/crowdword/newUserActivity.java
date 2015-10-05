@@ -98,6 +98,9 @@ public class newUserActivity extends ActionBarActivity {
             Toast.makeText(newUserActivity.this, "Error Occured", Toast.LENGTH_LONG).show();
         }
     }
+    public void cancel_user_btn(View v){
+        finish();
+    }
 }
 
 

@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.igl.crowdword.fxns.Word;
 import com.igl.crowdword.fxns.WordSet;

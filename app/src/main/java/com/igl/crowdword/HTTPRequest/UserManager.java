@@ -2,9 +2,9 @@ package com.igl.crowdword.HTTPRequest;
 
 import android.content.Context;
 import android.os.AsyncTask;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+//
+//import com.fasterxml.jackson.core.JsonProcessingException;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.igl.crowdword.R;
 import com.igl.crowdword.fxns.User;
@@ -17,6 +17,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
@@ -163,20 +165,31 @@ public class UserManager extends NetworkManager {
         @Override
         protected String doInBackground(User... params) {
 
-            Gson gson = new Gson();
-            String userString = gson.toJson(params[0]);
-            HttpURLConnection connection = null;
-            String asd = "";
+            URL url = null;
             try {
-                connection = getPostConnection(ApiPaths.USERS);
-                writeToOutputStream(connection, userString);
-                asd = readFromConnection(connection);
+                url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/" + ApiPaths.USERS);
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setDoOutput(true);
+                con.setRequestMethod("POST");
+                con.setRequestProperty("Content-Type", "application/json");
+                con.setRequestProperty("Accept", "application/json");
+                // con.setRequestProperty("app-id", "4b08dee3-c8ec-40a0-99d1-4aee47c0772a");
+                con.addRequestProperty("app-id", "4b08dee3-c8ec-40a0-99d1-4aee47c0772a");
+                con.connect();
+                Gson gson = new Gson();
+                String userString = gson.toJson(params[0]);
+              String asd = "";
+                writeToOutputStream(con, userString);
+                asd = readFromConnection(con);
                 return asd;
-
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (ProtocolException e) {
+                e.printStackTrace();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return asd;
+            return null;
         }
 
 

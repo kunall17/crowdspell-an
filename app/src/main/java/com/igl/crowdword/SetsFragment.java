@@ -18,9 +18,9 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+//
+//import com.fasterxml.jackson.core.JsonProcessingException;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -175,15 +175,7 @@ public class SetsFragment extends android.support.v4.app.Fragment {
 
         WordSet asd = new WordSet();
         String json_wordset = null;
-        ObjectMapper mapper = new ObjectMapper();
 
-        try {
-            json_wordset = mapper.writeValueAsString(asd);
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-        }
-
-        in1.putExtra("json_wordset", json_wordset);
         //in1.putExtra ("wordName", game_word[position].toUpperCase());
         startActivity(in1);
     }
