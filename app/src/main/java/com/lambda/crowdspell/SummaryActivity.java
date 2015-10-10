@@ -30,7 +30,6 @@ import com.lambda.crowdspell.fxns.analysis.SetScoreCarrier;
 import com.lambda.crowdspell.fxns.analysis.UserPoints;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -96,7 +95,7 @@ public class SummaryActivity extends ActionBarActivity {
     }
 
     public void submitScore(SetScoreCarrier ssc) {
-        GameManager.submitScoreAsync submit = new GameManager.submitScoreAsync();
+        GameManager.submitScoreAsync submit = new GameManager.submitScoreAsync(SummaryActivity.this);
         int code = 0;
         try {
             code = submit.execute(ssc).get();

@@ -1,12 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:yourapp="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.lambda.crowdspell.DashboardActivity">
- <!--   <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        yourapp:showAsAction="never" />-->
-
-
+    <item android:id="@+id/action_help"
+        android:icon="@drawable/ic_action_help"
+        android:title="Help"
+        android:showAsAction="ifRoom"
+        android:orderInCategory="1"
+        android:menuCategory="secondary"/>
 </menu>

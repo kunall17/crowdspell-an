@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -150,31 +151,35 @@ public class DashboardNewActivity extends AppCompatActivity implements YourRecyc
         //Notice how the title is set on the Collapsing Toolbar Layout instead of the Toolbar
         mCollapsingToolbarLayout.setTitle("Home");
 
-
+        if (new UserFunctions().checkIfGuestModeIsOn(getBaseContext())) {
+            navigationView.removeView(findViewById((R.id.drawer_create)));
+        } else {
+            navigationView.removeView(findViewById((R.id.drawer_create_user)));
+        }
         //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
-                                                             // This method will trigger on item Click of navigation menu
-                                                             @Override
-                                                             public boolean onNavigationItemSelected(MenuItem menuItem) {
+                     // This method will trigger on item Click of navigation menu
+                     @Override
+                     public boolean onNavigationItemSelected(MenuItem menuItem) {
 
 
-                                                                 //Checking if the item is in checked state or not, if not make it in checked state
-                                                                 if (menuItem.isChecked())
-                                                                     menuItem.setChecked(false);
-                                                                 else menuItem.setChecked(false);
+                         //Checking if the item is in checked state or not, if not make it in checked state
+                         if (menuItem.isChecked())
+                             menuItem.setChecked(false);
+                         else menuItem.setChecked(false);
 
-                                                                 //Closing drawer on item click
-                                                                 mDrawerLayout.closeDrawers();
+                         //Closing drawer on item click
+                         mDrawerLayout.closeDrawers();
 
-                                                                 //Check to see which item was being clicked and perform appropriate action
-                                                                 switch (menuItem.getItemId()) {
+                         //Check to see which item was being clicked and perform appropriate action
+                         switch (menuItem.getItemId()) {
 
-                                                                     case R.id.drawer_home:
-                                                                         mPager.setCurrentItem(0);
-                                                                         menuItem.setChecked(false);
+                             case R.id.drawer_home:
+                                 mPager.setCurrentItem(0);
+                                 menuItem.setChecked(false);
 
-                                                                         return true;
+                                 return true;
 /*
 
 //Replacing the main content with ContentFragment Which is our Inbox View;
@@ -185,40 +190,40 @@ startActivity(in);
 return true;
 */
 
-                                                                     // For rest of the options we just show a toast on click
-                                                                     case R.id.drawer_help:
-                                                                         Snackbar.make(mCoordinator, "Click on any set to play!", Snackbar.LENGTH_LONG).setAction("DISMISS", null).show();
-                                                                         menuItem.setChecked(false);
-                                                                         return true;
-                                                                     case R.id.drawer_create:
-                                                                         if (!new UserFunctions().checkIfGuestModeIsOn(getBaseContext())) {
-                                                                             Intent in1 = new Intent(DashboardNewActivity.this, CreateSetActivity.class);
-                                                                             startActivity(in1);
-                                                                         } else {
-                                                                             Toast.makeText(DashboardNewActivity.this, "You are a guest and cannot create sets!", Toast.LENGTH_LONG).show();
-                                                                         }
-                                                                         menuItem.setChecked(false);
-                                                                         return true;
-                                                                     case R.id.drawer_exit:
-                                                                         AlertDialog.Builder builder = new AlertDialog.Builder(DashboardNewActivity.this);
-                                                                         builder.setTitle("Exit?");
-                                                                         builder.setMessage("Are you Sure you want to Exit?");
-                                                                         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                                                                             @Override
-                                                                             public void onClick(DialogInterface dialog, int id) {
-                                                                                 System.exit(0);
-                                                                             }
-                                                                         });
-                                                                         builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                                                                             @Override
-                                                                             public void onClick(DialogInterface dialog, int id) {
-                                                                                 dialog.dismiss();
-                                                                             }
-                                                                         });
-                                                                         AlertDialog dialog = builder.create();
-                                                                         dialog.show();
-                                                                         menuItem.setChecked(false);
-                                                                         return true;
+                             // For rest of the options we just show a toast on click
+                             case R.id.drawer_help:
+                                 Snackbar.make(mCoordinator, "Click on any set to play!", Snackbar.LENGTH_LONG).setAction("DISMISS", null).show();
+                                 menuItem.setChecked(false);
+                                 return true;
+                             case R.id.drawer_create:
+                                 if (!new UserFunctions().checkIfGuestModeIsOn(getBaseContext())) {
+                                     Intent in1 = new Intent(DashboardNewActivity.this, CreateSetActivity.class);
+                                     startActivity(in1);
+                                 } else {
+                                     Toast.makeText(DashboardNewActivity.this, "You are a guest and cannot create sets!", Toast.LENGTH_LONG).show();
+                                 }
+                                 menuItem.setChecked(false);
+                                 return true;
+                             case R.id.drawer_exit:
+                                 AlertDialog.Builder builder = new AlertDialog.Builder(DashboardNewActivity.this);
+                                 builder.setTitle("Exit?");
+                                 builder.setMessage("Are you Sure you want to Exit?");
+                                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                     @Override
+                                     public void onClick(DialogInterface dialog, int id) {
+                                         System.exit(0);
+                                     }
+                                 });
+                                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                     @Override
+                                     public void onClick(DialogInterface dialog, int id) {
+                                         dialog.dismiss();
+                                     }
+                                 });
+                                 AlertDialog dialog = builder.create();
+                                 dialog.show();
+                                 menuItem.setChecked(false);
+                                 return true;
 /*
 case R.id.drawer_popular:
 //                        spn_adapter.add("mostpopular");
@@ -227,39 +232,39 @@ case R.id.drawer_rated:
 //                        spn_adapter.add("mostrated");
 return true;
 */
-                                                                     case R.id.drawer_create_user:
-                                                                         Intent in4 = new Intent(DashboardNewActivity.this, newUserActivity.class);
-                                                                         startActivity(in4);
-                                                                         menuItem.setChecked(false);
-                                                                         return true;
-                                                                     case R.id.drawer_suprise:
-                                                                         Random rnd = new Random();
-                                                                         //
-                                                                         //                        final int x = rnd.nextInt(wordset_list.size());
-                                                                         //                        WordSet wordset = wordset_list.get(x);
+                             case R.id.drawer_create_user:
+                                 Intent in4 = new Intent(DashboardNewActivity.this, newUserActivity.class);
+                                 startActivity(in4);
+                                 menuItem.setChecked(false);
+                                 return true;
+                             case R.id.drawer_suprise:
+                                 Random rnd = new Random();
+                                 //
+                                 //                        final int x = rnd.nextInt(wordset_list.size());
+                                 //                        WordSet wordset = wordset_list.get(x);
 
-                                                                         new AlertDialog.Builder(DashboardNewActivity.this)
-                                                                                 .setTitle("Suprise Me")
-                                                                                         //                                .setMessage("Do you want to play " + wordset.getName() + "?")
-                                                                                 .setIcon(android.R.drawable.ic_dialog_alert)
-                                                                                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                 new AlertDialog.Builder(DashboardNewActivity.this)
+                                         .setTitle("Suprise Me")
+                                                 //                                .setMessage("Do you want to play " + wordset.getName() + "?")
+                                         .setIcon(android.R.drawable.ic_dialog_alert)
+                                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
 
-                                                                                     public void onClick(DialogInterface dialog, int whichButton) {
-                                                                                         //                                        startGame(x);
-                                                                                     }
-                                                                                 })
-                                                                                 .setNegativeButton(android.R.string.no, null).show();
-                                                                         menuItem.setChecked(false);
-                                                                         return true;
-                                                                     case R.id.drawer_leaderboard:
-                                                                         mPager.setCurrentItem(1);
-                                                                         menuItem.setChecked(false);
-                                                                         return true;
-                                                                 }
+                                             public void onClick(DialogInterface dialog, int whichButton) {
+                                                 //                                        startGame(x);
+                                             }
+                                         })
+                                         .setNegativeButton(android.R.string.no, null).show();
+                                 menuItem.setChecked(false);
+                                 return true;
+                             case R.id.drawer_leaderboard:
+                                 mPager.setCurrentItem(1);
+                                 menuItem.setChecked(false);
+                                 return true;
+                         }
 
-                                                                 return true;
-                                                             }
-                                                         }
+                         return true;
+                     }
+                 }
 
         );
     }
@@ -296,7 +301,18 @@ return true;
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.action_help) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(DashboardNewActivity.this);
+            builder.setTitle("Exit?");
+            builder.setMessage(getString(R.string.help_string));
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int id) {
+                    System.exit(0);
+                }
+            });
+            AlertDialog dialog = builder.create();
+            dialog.show();
             return true;
         }
 

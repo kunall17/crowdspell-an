@@ -10,6 +10,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.igl.crowdword.R;
+import com.lambda.crowdspell.SummaryActivity;
 import com.lambda.crowdspell.fxns.WordSet;
 import com.lambda.crowdspell.fxns.analysis.SetScoreCarrier;
 import com.lambda.crowdspell.fxns.analysis.UserPoints;
@@ -243,10 +244,20 @@ public class GameManager extends NetworkManager {
 
 
     public static class submitScoreAsync extends AsyncTask<SetScoreCarrier, List<UserPoints>, Integer> {
+        ProgressDialog progress;
+
+        public submitScoreAsync(Context context) {
+            progress = new ProgressDialog(context);
+            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progress.setIndeterminate(true);
+            progress.setTitle("Submiting Score!");
+        }
 
         @Override
         protected void onPreExecute() {
 //            updateDisplay("Starting task");
+            progress.show();
+            progress.setCancelable(false);
         }
 
         @Override
@@ -257,7 +268,6 @@ public class GameManager extends NetworkManager {
             String result = null;
             int code = 0;
             BufferedReader rdr = null;
-
             Gson gson = new Gson();
             result = gson.toJson(ssc);
             try {
@@ -308,9 +318,7 @@ public class GameManager extends NetworkManager {
                 finalString = e.toString();
                 System.out.println("Exception Aa gaya-" + e.toString());
             } finally {
-                if
-                        ((rdr != null))
-
+                if((rdr != null))
                     try {
                         rdr.close();
                     } catch (IOException e) {
@@ -323,6 +331,7 @@ public class GameManager extends NetworkManager {
 
         protected void onPostExecute(int result) {
             System.out.println("Result is here:-" + result);
+            progress.dismiss();
         }
 
     }

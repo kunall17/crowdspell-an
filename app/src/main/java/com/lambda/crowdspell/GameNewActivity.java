@@ -202,6 +202,7 @@ public class GameNewActivity extends ActionBarActivity {
 
     public void next_btn(View v) {
         imageButton.setEnabled(false);
+        updateColor();
         if (currentGame + 1 >= totalGame) {
             wordset.getWords().get(currentGame).setChancesTaken(maxChances);
             words_lost[currentGame] = word;
@@ -399,6 +400,7 @@ public class GameNewActivity extends ActionBarActivity {
 
         attempts++;
         updateStatus();
+        updateColor();
     }
 
     public void keyBtn_Click(View v) {
@@ -415,8 +417,6 @@ public class GameNewActivity extends ActionBarActivity {
             win();
             print("Yoou have fucinkg won- keybtnclick");
         }
-
-
         printCharArray();
         updateStatus();
     }
@@ -468,7 +468,6 @@ public class GameNewActivity extends ActionBarActivity {
     }
 
     public int[] randomize(int length) {
-
         int showLetters = 1;
         if (length > 5 && length <= 8) {
             showLetters = 2;
@@ -582,7 +581,6 @@ public class GameNewActivity extends ActionBarActivity {
 
     void setupGame(int gameIndex) {
         List<Character> char_array = new ArrayList<Character>(Arrays.asList(new Character[]{'Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A', '1', '2', '3', '4', '5', '6', '7', '8', '9'}));
-
         if (currentGame != 0) {
             removeTextViews();
             updateColor();

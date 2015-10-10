@@ -128,4 +128,7 @@
     <string name="drawer_close">Close</string>
     <string name="guestmode_warning">Are you Sure you want to enter Guest Mode?
 You will not be able to create sets</string>
+    <string name="help_string">
+        These are WordSets, on pressing a certain WordSet in the list you can play!\n
+    </string>
 </resources>
