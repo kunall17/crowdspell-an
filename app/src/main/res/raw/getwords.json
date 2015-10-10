@@ -1,21 +1,51 @@
 [
-    {
-        "type": "wordSet",
-        "createdDate": "2015-07-20T17:06:08",
-        "id": 3,
-        "name": "Best Movies @ Oscars 2013",
-        "tags": [
+  {
+    "type": "wordSet",
+    "createdDate": "2015-07-20T17:06:08",
+    "id": 3,
+    "name": "Best Movies @ Oscars 2013",
+    "tags": [
+      {
+        "name": "movies"
+      },
+      {
+        "name": "hollywood"
+      },
+      {
+        "name": "oscars"
+      }
+    ],
+    "user": {
+      "authenticationProvider": "selfAuthentication",
+      "id": 1,
+      "joiningDate": "2015-07-16T21:38:32",
+      "password": "",
+      "salt": "",
+      "token": "",
+      "username": "crowdspell-bot"
+    },
+    "words": [
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 23,
+        "originalValue": "12 Years a Slave",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 3,
+          "name": "Best Movies @ Oscars 2013",
+          "tags": [
             {
-                "name": "movies"
+              "name": "movies"
             },
             {
-                "name": "hollywood"
+              "name": "hollywood"
             },
             {
-                "name": "oscars"
+              "name": "oscars"
             }
-        ],
-        "user": {
+          ],
+          "user": {
             "authenticationProvider": "selfAuthentication",
             "id": 1,
             "joiningDate": "2015-07-16T21:38:32",
@@ -23,306 +53,30 @@
             "salt": "",
             "token": "",
             "username": "crowdspell-bot"
-        },
-        "words": [
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 24,
+        "originalValue": "American Hustle",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 3,
+          "name": "Best Movies @ Oscars 2013",
+          "tags": [
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 23,
-                "originalValue": "12 Years a Slave",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 3,
-                    "name": "Best Movies @ Oscars 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "movies"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 24,
-                "originalValue": "American Hustle",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 3,
-                    "name": "Best Movies @ Oscars 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "hollywood"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 25,
-                "originalValue": "Captain Phillips",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 3,
-                    "name": "Best Movies @ Oscars 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 26,
-                "originalValue": "Dallas Buyers Club",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 3,
-                    "name": "Best Movies @ Oscars 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 27,
-                "originalValue": "Gravity",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 3,
-                    "name": "Best Movies @ Oscars 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 28,
-                "originalValue": "Her",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 3,
-                    "name": "Best Movies @ Oscars 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 29,
-                "originalValue": "Nebraska",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 3,
-                    "name": "Best Movies @ Oscars 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 30,
-                "originalValue": "Philomena",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 3,
-                    "name": "Best Movies @ Oscars 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 31,
-                "originalValue": "The Wolf of Wall Street",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 3,
-                    "name": "Best Movies @ Oscars 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "oscars"
             }
-        ]
-    },
-    {
-        "type": "wordSet",
-        "createdDate": "2015-07-20T17:06:08",
-        "id": 4,
-        "name": "Best Movies @ Oscars 2012",
-        "tags": [
-            {
-                "name": "movies"
-            },
-            {
-                "name": "hollywood"
-            },
-            {
-                "name": "oscars"
-            }
-        ],
-        "user": {
+          ],
+          "user": {
             "authenticationProvider": "selfAuthentication",
             "id": 1,
             "joiningDate": "2015-07-16T21:38:32",
@@ -330,303 +84,30 @@
             "salt": "",
             "token": "",
             "username": "crowdspell-bot"
-        },
-        "words": [
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 25,
+        "originalValue": "Captain Phillips",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 3,
+          "name": "Best Movies @ Oscars 2013",
+          "tags": [
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 32,
-                "originalValue": "Argo",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 4,
-                    "name": "Best Movies @ Oscars 2012",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "movies"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 33,
-                "originalValue": "Amour",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 4,
-                    "name": "Best Movies @ Oscars 2012",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "hollywood"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 34,
-                "originalValue": "Beasts of the Southern Wild",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 4,
-                    "name": "Best Movies @ Oscars 2012",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 35,
-                "originalValue": "Django Unchained",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 4,
-                    "name": "Best Movies @ Oscars 2012",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 36,
-                "originalValue": "Les Miserables",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 4,
-                    "name": "Best Movies @ Oscars 2012",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 37,
-                "originalValue": "Life of Pi",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 4,
-                    "name": "Best Movies @ Oscars 2012",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 38,
-                "originalValue": "Lincoln",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 4,
-                    "name": "Best Movies @ Oscars 2012",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 39,
-                "originalValue": "Silver Linings Playbook",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 4,
-                    "name": "Best Movies @ Oscars 2012",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 40,
-                "originalValue": "Zero Dark Thirty",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 4,
-                    "name": "Best Movies @ Oscars 2012",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "hollywood"
-                        },
-                        {
-                            "name": "oscars"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "oscars"
             }
-        ]
-    },
-    {
-        "type": "wordSet",
-        "createdDate": "2015-07-20T17:06:08",
-        "id": 5,
-        "name": "MUFC Top scorers",
-        "tags": [
-            {
-                "name": "soccer"
-            },
-            {
-                "name": "manchester united"
-            }
-        ],
-        "user": {
+          ],
+          "user": {
             "authenticationProvider": "selfAuthentication",
             "id": 1,
             "joiningDate": "2015-07-16T21:38:32",
@@ -634,304 +115,30 @@
             "salt": "",
             "token": "",
             "username": "crowdspell-bot"
-        },
-        "words": [
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 26,
+        "originalValue": "Dallas Buyers Club",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 3,
+          "name": "Best Movies @ Oscars 2013",
+          "tags": [
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 41,
-                "originalValue": "Dennis Viollet",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 5,
-                    "name": "MUFC Top scorers",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "manchester united"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "movies"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 42,
-                "originalValue": "Joe Spence",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 5,
-                    "name": "MUFC Top scorers",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "manchester united"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "hollywood"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 43,
-                "originalValue": "Ryan Giggs",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 5,
-                    "name": "MUFC Top scorers",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "manchester united"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 44,
-                "originalValue": "Paul Scholes",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 5,
-                    "name": "MUFC Top scorers",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "manchester united"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 45,
-                "originalValue": "Mark Hughes",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 5,
-                    "name": "MUFC Top scorers",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "manchester united"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 46,
-                "originalValue": "Wayne Rooney",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 5,
-                    "name": "MUFC Top scorers",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "manchester united"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 47,
-                "originalValue": "Bobby Charlton",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 5,
-                    "name": "MUFC Top scorers",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "manchester united"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 48,
-                "originalValue": "George Best",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 5,
-                    "name": "MUFC Top scorers",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "manchester united"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 49,
-                "originalValue": "Jack Rowley",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 5,
-                    "name": "MUFC Top scorers",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "manchester united"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 50,
-                "originalValue": "Denis Law",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 5,
-                    "name": "MUFC Top scorers",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "manchester united"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "oscars"
             }
-        ]
-    },
-    {
-        "type": "wordSet",
-        "createdDate": "2015-07-20T17:06:08",
-        "id": 6,
-        "name": "Top Scorers in Test cricket",
-        "tags": [
-            {
-                "name": "cricket"
-            },
-            {
-                "name": "sports"
-            }
-        ],
-        "user": {
+          ],
+          "user": {
             "authenticationProvider": "selfAuthentication",
             "id": 1,
             "joiningDate": "2015-07-16T21:38:32",
@@ -939,332 +146,30 @@
             "salt": "",
             "token": "",
             "username": "crowdspell-bot"
-        },
-        "words": [
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 27,
+        "originalValue": "Gravity",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 3,
+          "name": "Best Movies @ Oscars 2013",
+          "tags": [
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 51,
-                "originalValue": "Sunil Gavaskar",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "movies"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 52,
-                "originalValue": "Kumar Sangakkara",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "hollywood"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 53,
-                "originalValue": "Brian Lara",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 54,
-                "originalValue": "Mahela Jayawardene",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 55,
-                "originalValue": "Allan Border",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 56,
-                "originalValue": "Shivnarine Chanderpaul",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 57,
-                "originalValue": "Rahul Dravid",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 58,
-                "originalValue": "Jacques Kallis",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 59,
-                "originalValue": "Ricky Ponting",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 60,
-                "originalValue": "Steve Waugh",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 61,
-                "originalValue": "Sachin Tendulkar",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 6,
-                    "name": "Top Scorers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "oscars"
             }
-        ]
-    },
-    {
-        "type": "wordSet",
-        "createdDate": "2015-07-20T17:06:08",
-        "id": 7,
-        "name": "Top bowlers in Test cricket",
-        "tags": [
-            {
-                "name": "cricket"
-            },
-            {
-                "name": "sports"
-            }
-        ],
-        "user": {
+          ],
+          "user": {
             "authenticationProvider": "selfAuthentication",
             "id": 1,
             "joiningDate": "2015-07-16T21:38:32",
@@ -1272,307 +177,30 @@
             "salt": "",
             "token": "",
             "username": "crowdspell-bot"
-        },
-        "words": [
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 28,
+        "originalValue": "Her",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 3,
+          "name": "Best Movies @ Oscars 2013",
+          "tags": [
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 62,
-                "originalValue": "Shane Warne",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 7,
-                    "name": "Top bowlers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "movies"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 63,
-                "originalValue": "Glenn McGrath",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 7,
-                    "name": "Top bowlers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "hollywood"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 64,
-                "originalValue": "Courtney Walsh",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 7,
-                    "name": "Top bowlers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 65,
-                "originalValue": "Anil Kumble",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 7,
-                    "name": "Top bowlers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 66,
-                "originalValue": "Muttiah Muralitharan",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 7,
-                    "name": "Top bowlers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 67,
-                "originalValue": "Kapil Dev",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 7,
-                    "name": "Top bowlers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 68,
-                "originalValue": "Shaun Pollock",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 7,
-                    "name": "Top bowlers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 69,
-                "originalValue": "Harbhajan Singh",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 7,
-                    "name": "Top bowlers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 70,
-                "originalValue": "Wasim Akram",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 7,
-                    "name": "Top bowlers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 71,
-                "originalValue": "Richard Hadlee",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 7,
-                    "name": "Top bowlers in Test cricket",
-                    "tags": [
-                        {
-                            "name": "cricket"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "oscars"
             }
-        ]
-    },
-    {
-        "type": "wordSet",
-        "createdDate": "2015-07-20T17:06:08",
-        "id": 8,
-        "name": "Best Movies @ Filmfare 2013",
-        "tags": [
-            {
-                "name": "movies"
-            },
-            {
-                "name": "bollywood"
-            },
-            {
-                "name": "filmfare"
-            }
-        ],
-        "user": {
+          ],
+          "user": {
             "authenticationProvider": "selfAuthentication",
             "id": 1,
             "joiningDate": "2015-07-16T21:38:32",
@@ -1580,148 +208,1546 @@
             "salt": "",
             "token": "",
             "username": "crowdspell-bot"
-        },
-        "words": [
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 29,
+        "originalValue": "Nebraska",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 3,
+          "name": "Best Movies @ Oscars 2013",
+          "tags": [
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 72,
-                "originalValue": "Chennai Express",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 8,
-                    "name": "Best Movies @ Filmfare 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "bollywood"
-                        },
-                        {
-                            "name": "filmfare"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "movies"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 73,
-                "originalValue": "Raanjhanaa",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 8,
-                    "name": "Best Movies @ Filmfare 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "bollywood"
-                        },
-                        {
-                            "name": "filmfare"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "hollywood"
             },
             {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 74,
-                "originalValue": "Bhaag Milkha Bhaag",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 8,
-                    "name": "Best Movies @ Filmfare 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "bollywood"
-                        },
-                        {
-                            "name": "filmfare"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "createdDate": "2015-07-20T17:07:29",
-                "id": 75,
-                "originalValue": "Ram Leela",
-                "wordSet": {
-                    "createdDate": "2015-07-20T17:06:08",
-                    "id": 8,
-                    "name": "Best Movies @ Filmfare 2013",
-                    "tags": [
-                        {
-                            "name": "movies"
-                        },
-                        {
-                            "name": "bollywood"
-                        },
-                        {
-                            "name": "filmfare"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "oscars"
             }
-        ]
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 30,
+        "originalValue": "Philomena",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 3,
+          "name": "Best Movies @ Oscars 2013",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 31,
+        "originalValue": "The Wolf of Wall Street",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 3,
+          "name": "Best Movies @ Oscars 2013",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "wordSet",
+    "createdDate": "2015-07-20T17:06:08",
+    "id": 4,
+    "name": "Best Movies @ Oscars 2012",
+    "tags": [
+      {
+        "name": "movies"
+      },
+      {
+        "name": "hollywood"
+      },
+      {
+        "name": "oscars"
+      }
+    ],
+    "user": {
+      "authenticationProvider": "selfAuthentication",
+      "id": 1,
+      "joiningDate": "2015-07-16T21:38:32",
+      "password": "",
+      "salt": "",
+      "token": "",
+      "username": "crowdspell-bot"
     },
-    {
-        "type": "wordSet",
-        "createdDate": "2015-07-16T21:39:23",
+    "words": [
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 32,
+        "originalValue": "Argo",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 4,
+          "name": "Best Movies @ Oscars 2012",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 33,
+        "originalValue": "Amour",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 4,
+          "name": "Best Movies @ Oscars 2012",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 34,
+        "originalValue": "Beasts of the Southern Wild",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 4,
+          "name": "Best Movies @ Oscars 2012",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 35,
+        "originalValue": "Django Unchained",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 4,
+          "name": "Best Movies @ Oscars 2012",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 36,
+        "originalValue": "Les Miserables",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 4,
+          "name": "Best Movies @ Oscars 2012",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 37,
+        "originalValue": "Life of Pi",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 4,
+          "name": "Best Movies @ Oscars 2012",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 38,
+        "originalValue": "Lincoln",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 4,
+          "name": "Best Movies @ Oscars 2012",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 39,
+        "originalValue": "Silver Linings Playbook",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 4,
+          "name": "Best Movies @ Oscars 2012",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 40,
+        "originalValue": "Zero Dark Thirty",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 4,
+          "name": "Best Movies @ Oscars 2012",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "hollywood"
+            },
+            {
+              "name": "oscars"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "wordSet",
+    "createdDate": "2015-07-20T17:06:08",
+    "id": 5,
+    "name": "MUFC Top scorers",
+    "tags": [
+      {
+        "name": "soccer"
+      },
+      {
+        "name": "manchester united"
+      }
+    ],
+    "user": {
+      "authenticationProvider": "selfAuthentication",
+      "id": 1,
+      "joiningDate": "2015-07-16T21:38:32",
+      "password": "",
+      "salt": "",
+      "token": "",
+      "username": "crowdspell-bot"
+    },
+    "words": [
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 41,
+        "originalValue": "Dennis Viollet",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 5,
+          "name": "MUFC Top scorers",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "manchester united"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 42,
+        "originalValue": "Joe Spence",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 5,
+          "name": "MUFC Top scorers",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "manchester united"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 43,
+        "originalValue": "Ryan Giggs",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 5,
+          "name": "MUFC Top scorers",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "manchester united"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 44,
+        "originalValue": "Paul Scholes",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 5,
+          "name": "MUFC Top scorers",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "manchester united"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 45,
+        "originalValue": "Mark Hughes",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 5,
+          "name": "MUFC Top scorers",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "manchester united"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 46,
+        "originalValue": "Wayne Rooney",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 5,
+          "name": "MUFC Top scorers",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "manchester united"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 47,
+        "originalValue": "Bobby Charlton",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 5,
+          "name": "MUFC Top scorers",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "manchester united"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 48,
+        "originalValue": "George Best",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 5,
+          "name": "MUFC Top scorers",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "manchester united"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 49,
+        "originalValue": "Jack Rowley",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 5,
+          "name": "MUFC Top scorers",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "manchester united"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 50,
+        "originalValue": "Denis Law",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 5,
+          "name": "MUFC Top scorers",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "manchester united"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "wordSet",
+    "createdDate": "2015-07-20T17:06:08",
+    "id": 6,
+    "name": "Top Scorers in Test cricket",
+    "tags": [
+      {
+        "name": "cricket"
+      },
+      {
+        "name": "sports"
+      }
+    ],
+    "user": {
+      "authenticationProvider": "selfAuthentication",
+      "id": 1,
+      "joiningDate": "2015-07-16T21:38:32",
+      "password": "",
+      "salt": "",
+      "token": "",
+      "username": "crowdspell-bot"
+    },
+    "words": [
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 51,
+        "originalValue": "Sunil Gavaskar",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 52,
+        "originalValue": "Kumar Sangakkara",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 53,
+        "originalValue": "Brian Lara",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 54,
+        "originalValue": "Mahela Jayawardene",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 55,
+        "originalValue": "Allan Border",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 56,
+        "originalValue": "Shivnarine Chanderpaul",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 57,
+        "originalValue": "Rahul Dravid",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 58,
+        "originalValue": "Jacques Kallis",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 59,
+        "originalValue": "Ricky Ponting",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 60,
+        "originalValue": "Steve Waugh",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 61,
+        "originalValue": "Sachin Tendulkar",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 6,
+          "name": "Top Scorers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "wordSet",
+    "createdDate": "2015-07-20T17:06:08",
+    "id": 7,
+    "name": "Top bowlers in Test cricket",
+    "tags": [
+      {
+        "name": "cricket"
+      },
+      {
+        "name": "sports"
+      }
+    ],
+    "user": {
+      "authenticationProvider": "selfAuthentication",
+      "id": 1,
+      "joiningDate": "2015-07-16T21:38:32",
+      "password": "",
+      "salt": "",
+      "token": "",
+      "username": "crowdspell-bot"
+    },
+    "words": [
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 62,
+        "originalValue": "Shane Warne",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 7,
+          "name": "Top bowlers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 63,
+        "originalValue": "Glenn McGrath",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 7,
+          "name": "Top bowlers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 64,
+        "originalValue": "Courtney Walsh",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 7,
+          "name": "Top bowlers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 65,
+        "originalValue": "Anil Kumble",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 7,
+          "name": "Top bowlers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 66,
+        "originalValue": "Muttiah Muralitharan",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 7,
+          "name": "Top bowlers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 67,
+        "originalValue": "Kapil Dev",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 7,
+          "name": "Top bowlers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 68,
+        "originalValue": "Shaun Pollock",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 7,
+          "name": "Top bowlers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 69,
+        "originalValue": "Harbhajan Singh",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 7,
+          "name": "Top bowlers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 70,
+        "originalValue": "Wasim Akram",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 7,
+          "name": "Top bowlers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 71,
+        "originalValue": "Richard Hadlee",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 7,
+          "name": "Top bowlers in Test cricket",
+          "tags": [
+            {
+              "name": "cricket"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "wordSet",
+    "createdDate": "2015-07-20T17:06:08",
+    "id": 8,
+    "name": "Best Movies @ Filmfare 2013",
+    "tags": [
+      {
+        "name": "movies"
+      },
+      {
+        "name": "bollywood"
+      },
+      {
+        "name": "filmfare"
+      }
+    ],
+    "user": {
+      "authenticationProvider": "selfAuthentication",
+      "id": 1,
+      "joiningDate": "2015-07-16T21:38:32",
+      "password": "",
+      "salt": "",
+      "token": "",
+      "username": "crowdspell-bot"
+    },
+    "words": [
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 72,
+        "originalValue": "Chennai Express",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 8,
+          "name": "Best Movies @ Filmfare 2013",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "bollywood"
+            },
+            {
+              "name": "filmfare"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 73,
+        "originalValue": "Raanjhanaa",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 8,
+          "name": "Best Movies @ Filmfare 2013",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "bollywood"
+            },
+            {
+              "name": "filmfare"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 74,
+        "originalValue": "Bhaag Milkha Bhaag",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 8,
+          "name": "Best Movies @ Filmfare 2013",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "bollywood"
+            },
+            {
+              "name": "filmfare"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "createdDate": "2015-07-20T17:07:29",
+        "id": 75,
+        "originalValue": "Ram Leela",
+        "wordSet": {
+          "createdDate": "2015-07-20T17:06:08",
+          "id": 8,
+          "name": "Best Movies @ Filmfare 2013",
+          "tags": [
+            {
+              "name": "movies"
+            },
+            {
+              "name": "bollywood"
+            },
+            {
+              "name": "filmfare"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "wordSet",
+    "createdDate": "2015-07-16T21:39:23",
+    "id": 1,
+    "name": "UCL Winners Challenge -1",
+    "tags": [
+      {
+        "name": "soccer"
+      },
+      {
+        "name": "sports"
+      }
+    ],
+    "user": {
+      "authenticationProvider": "selfAuthentication",
+      "id": 1,
+      "joiningDate": "2015-07-16T21:38:32",
+      "password": "",
+      "salt": "",
+      "token": "",
+      "username": "crowdspell-bot"
+    },
+    "words": [
+      {
+        "chancesTaken": 0,
         "id": 1,
-        "name": "UCL Winners Challenge -1",
-        "tags": [
+        "originalValue": "Real Madrid",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 1,
+          "name": "UCL Winners Challenge -1",
+          "tags": [
             {
-                "name": "soccer"
+              "name": "soccer"
             },
             {
-                "name": "sports"
+              "name": "sports"
             }
-        ],
-        "user": {
+          ],
+          "user": {
             "authenticationProvider": "selfAuthentication",
             "id": 1,
             "joiningDate": "2015-07-16T21:38:32",
@@ -1729,267 +1755,26 @@
             "salt": "",
             "token": "",
             "username": "crowdspell-bot"
-        },
-        "words": [
-            {
-                "chancesTaken": 0,
-                "id": 1,
-                "originalValue": "Real Madrid",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 1,
-                    "name": "UCL Winners Challenge -1",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 2,
-                "originalValue": "Milan",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 1,
-                    "name": "UCL Winners Challenge -1",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 3,
-                "originalValue": "Bayern Munich",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 1,
-                    "name": "UCL Winners Challenge -1",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 4,
-                "originalValue": "Barcelona",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 1,
-                    "name": "UCL Winners Challenge -1",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 5,
-                "originalValue": "Liverpool",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 1,
-                    "name": "UCL Winners Challenge -1",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 6,
-                "originalValue": "Ajax",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 1,
-                    "name": "UCL Winners Challenge -1",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 7,
-                "originalValue": "Internazionale",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 1,
-                    "name": "UCL Winners Challenge -1",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 8,
-                "originalValue": "Manchester United",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 1,
-                    "name": "UCL Winners Challenge -1",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 9,
-                "originalValue": "Juventus",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 1,
-                    "name": "UCL Winners Challenge -1",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "type": "wordSet",
-        "createdDate": "2015-07-16T21:39:23",
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
         "id": 2,
-        "name": "UCL Winners Challenge -2",
-        "tags": [
+        "originalValue": "Milan",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 1,
+          "name": "UCL Winners Challenge -1",
+          "tags": [
             {
-                "name": "soccer"
+              "name": "soccer"
             },
             {
-                "name": "sports"
+              "name": "sports"
             }
-        ],
-        "user": {
+          ],
+          "user": {
             "authenticationProvider": "selfAuthentication",
             "id": 1,
             "joiningDate": "2015-07-16T21:38:32",
@@ -1997,359 +1782,575 @@
             "salt": "",
             "token": "",
             "username": "crowdspell-bot"
-        },
-        "words": [
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 3,
+        "originalValue": "Bayern Munich",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 1,
+          "name": "UCL Winners Challenge -1",
+          "tags": [
             {
-                "chancesTaken": 0,
-                "id": 10,
-                "originalValue": "Benfica",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "soccer"
             },
             {
-                "chancesTaken": 0,
-                "id": 11,
-                "originalValue": "Nottingham Forest",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 12,
-                "originalValue": "Porto",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 13,
-                "originalValue": "Celtic",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 14,
-                "originalValue": "Hamburg",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 15,
-                "originalValue": "Steaua Bucuresti",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 16,
-                "originalValue": "Marseille",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 17,
-                "originalValue": "Borussia Dortmund",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 18,
-                "originalValue": "Chelsea",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 19,
-                "originalValue": "Feyenoord",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 20,
-                "originalValue": "Aston Villa",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 21,
-                "originalValue": "PSV Eindhoven",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
-            },
-            {
-                "chancesTaken": 0,
-                "id": 22,
-                "originalValue": "Red Star Belgrade",
-                "wordSet": {
-                    "createdDate": "2015-07-16T21:39:23",
-                    "id": 2,
-                    "name": "UCL Winners Challenge -2",
-                    "tags": [
-                        {
-                            "name": "soccer"
-                        },
-                        {
-                            "name": "sports"
-                        }
-                    ],
-                    "user": {
-                        "authenticationProvider": "selfAuthentication",
-                        "id": 1,
-                        "joiningDate": "2015-07-16T21:38:32",
-                        "password": "",
-                        "salt": "",
-                        "token": "",
-                        "username": "crowdspell-bot"
-                    }
-                }
+              "name": "sports"
             }
-        ]
-    }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 4,
+        "originalValue": "Barcelona",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 1,
+          "name": "UCL Winners Challenge -1",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 5,
+        "originalValue": "Liverpool",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 1,
+          "name": "UCL Winners Challenge -1",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 6,
+        "originalValue": "Ajax",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 1,
+          "name": "UCL Winners Challenge -1",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 7,
+        "originalValue": "Internazionale",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 1,
+          "name": "UCL Winners Challenge -1",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 8,
+        "originalValue": "Manchester United",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 1,
+          "name": "UCL Winners Challenge -1",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 9,
+        "originalValue": "Juventus",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 1,
+          "name": "UCL Winners Challenge -1",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "type": "wordSet",
+    "createdDate": "2015-07-16T21:39:23",
+    "id": 2,
+    "name": "UCL Winners Challenge -2",
+    "tags": [
+      {
+        "name": "soccer"
+      },
+      {
+        "name": "sports"
+      }
+    ],
+    "user": {
+      "authenticationProvider": "selfAuthentication",
+      "id": 1,
+      "joiningDate": "2015-07-16T21:38:32",
+      "password": "",
+      "salt": "",
+      "token": "",
+      "username": "crowdspell-bot"
+    },
+    "words": [
+      {
+        "chancesTaken": 0,
+        "id": 10,
+        "originalValue": "Benfica",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 11,
+        "originalValue": "Nottingham Forest",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 12,
+        "originalValue": "Porto",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 13,
+        "originalValue": "Celtic",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 14,
+        "originalValue": "Hamburg",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 15,
+        "originalValue": "Steaua Bucuresti",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 16,
+        "originalValue": "Marseille",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 17,
+        "originalValue": "Borussia Dortmund",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 18,
+        "originalValue": "Chelsea",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 19,
+        "originalValue": "Feyenoord",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 20,
+        "originalValue": "Aston Villa",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 21,
+        "originalValue": "PSV Eindhoven",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      },
+      {
+        "chancesTaken": 0,
+        "id": 22,
+        "originalValue": "Red Star Belgrade",
+        "wordSet": {
+          "createdDate": "2015-07-16T21:39:23",
+          "id": 2,
+          "name": "UCL Winners Challenge -2",
+          "tags": [
+            {
+              "name": "soccer"
+            },
+            {
+              "name": "sports"
+            }
+          ],
+          "user": {
+            "authenticationProvider": "selfAuthentication",
+            "id": 1,
+            "joiningDate": "2015-07-16T21:38:32",
+            "password": "",
+            "salt": "",
+            "token": "",
+            "username": "crowdspell-bot"
+          }
+        }
+      }
+    ]
+  }
 ]
+

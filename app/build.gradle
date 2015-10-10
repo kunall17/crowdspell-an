@@ -18,7 +18,7 @@ android {
         applicationId 'com.lambda.crowdspell'
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 3
+        versionCode 7
         versionName '2.0'
     }
     buildTypes {
@@ -34,9 +34,9 @@ android {
 dependencies {
     compile 'com.android.support:appcompat-v7:22.2.0'
     compile files('libs/gson-2.3.1.jar')
-//    compile files('libs/jackson-annotations-2.5.4.jar')
-//    compile files('libs/jackson-core-2.5.4.jar')
-//    compile files('libs/jackson-databind-2.5.4.jar')
+    //    compile files('libs/jackson-annotations-2.5.4.jar')
+    //    compile files('libs/jackson-core-2.5.4.jar')
+    //    compile files('libs/jackson-databind-2.5.4.jar')
     compile 'com.android.support:design:22.2.0'
     compile 'com.android.support:recyclerview-v7:22.2.0'
 }

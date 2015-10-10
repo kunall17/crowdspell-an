@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:yourapp="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.igl.crowdword.DashboardActivity">
+    tools:context="com.lambda.crowdspell.DashboardActivity">
  <!--   <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
@@ -9,16 +9,4 @@
         yourapp:showAsAction="never" />-->
 
 
-    <item
-        android:id="@+id/menu_dashboard_search"
-        android:orderInCategory="100"
-        android:title="Search"
-        android:actionViewClass="android.support.v7.widget.SearchView"
-        yourapp:showAsAction="always" />
-    <item
-        android:id="@+id/action_user"
-        android:icon="@drawable/ic_user"
-        android:orderInCategory="300"
-        android:title="User"
-        yourapp:showAsAction="ifRoom"></item>
 </menu>

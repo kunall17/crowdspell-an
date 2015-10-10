@@ -21,7 +21,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:text="Title"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_gravity="center"
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/progress_TV"
@@ -68,11 +70,10 @@
 
         </LinearLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical">
+            android:layout_weight="1">
 
             <LinearLayout
                 android:id="@+id/labelsGenerator"
@@ -90,10 +91,33 @@
                     android:textSize="25sp" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/labelsGenerator2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/labelsGenerator"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView101"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textIsSelectable="false"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
             <RelativeLayout
                 android:id="@+id/button_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentStart="true"
+                android:layout_gravity="bottom"
                 android:orientation="horizontal">
 
                 <Button
@@ -123,17 +147,7 @@
                     android:text="New Button" />
             </RelativeLayout>
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/favourite_btn"
-                android:onClick="testing_btjn"
-                android:text="1"
-                android:visibility="invisible" />
-
-        </LinearLayout>
+        </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
