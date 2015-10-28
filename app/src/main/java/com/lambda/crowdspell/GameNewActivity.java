@@ -15,6 +15,8 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -78,16 +80,17 @@ public class GameNewActivity extends ActionBarActivity {
     Button right;
     Button middle;
     String words_lost[];
-    List<WordSet> sets_fav_list = null;
 
     public void print(String text) {
         System.out.println(text);
     }
 
 
-    //TODO makeshape uniform
-    void makeShapeUniform() {
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        // check if the request code is same as what is passed  here it is 2
+        finish();
     }
 
     void gameCompleted() {
@@ -97,6 +100,8 @@ public class GameNewActivity extends ActionBarActivity {
         SetScoreCarrier ssc = new SetScoreCarrier();
         ssc.setWords(wordset.getWords());
         ssc.setSetId(wordset.getId());
+        ssc.setUserToken(new UserFunctions().getCurrentToken(GameNewActivity.this));
+
         in1.putExtra("words_lost", words_lost);
 
         String ssc_json = gson.toJson(ssc);
@@ -104,19 +109,7 @@ public class GameNewActivity extends ActionBarActivity {
         Log.d("json", ssc_json);
 
         in1.putExtra("words_won", words_won);
-        startActivity(in1);
-
-    }
-
-
-    // TODO saveScores
-    void saveScores(int gameIndex) {
-
-    }
-
-
-    void checkForMaxChances(String text) {
-
+        startActivityForResult(in1, 0);
     }
 
     public void favourite_btn(View v) {
@@ -165,14 +158,15 @@ public class GameNewActivity extends ActionBarActivity {
 
             if (wrong > maxChances) {
                 //TODO snackbar Snackbar.make(getBaseContext(),text,Snackbar.LENGTH_LONG).show();
-                Toast.makeText(this, "You took more than 5 chances, you wont be awarded points for this one!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "You took more than 5 chances, you wont be awarded points for this one!", Toast.LENGTH_SHORT).show();
                 wordset.getWords().get(currentGame).setChancesTaken(maxChances);
             } else {
                 wordset.getWords().get(currentGame).setChancesTaken(attempts);
-                Toast.makeText(this, "You Completed in " + wrong + " wrong attempts!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "You Completed in " + wrong + " wrong attempts!", Toast.LENGTH_SHORT).show();
 
             }
             currentGame += 1;
+            rotateTextView(TEXT_WIN);
 
 
             new CountDownTimer(2000, 1000) {
@@ -192,7 +186,6 @@ public class GameNewActivity extends ActionBarActivity {
             resetAll();
             updateStatus();
 
-
         }
     }
 
@@ -200,16 +193,54 @@ public class GameNewActivity extends ActionBarActivity {
         Snackbar.make(v, "Click on the right option!", Snackbar.LENGTH_LONG).setAction("DISMISS", null).show();
     }
 
+    public static final int TEXT_WIN = 0;
+    public static final int TEXT_LOOSE = 1;
+    public static final int TEXT_DEFAULT = 3;
+    public static final int ANIMATION_DURATION = 700;
+
+    public void rotateTextView(int position) {
+        circle.setColor(getResources().getColor(R.color.color_circle));
+        switch (position) {
+            case TEXT_WIN:
+
+                RotateAnimation rotate = new RotateAnimation(0f, 90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+
+// prevents View from restoring to original direction.
+                rotate.setFillAfter(true);
+                rotate.setDuration(ANIMATION_DURATION);
+                circle_txt.startAnimation(rotate);
+                circle_txt.setText(":)");
+
+                break;
+            case TEXT_LOOSE:
+                RotateAnimation rotate1 = new RotateAnimation(0f, 90, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+// prevents View from restoring to original direction.
+                rotate1.setFillAfter(true);
+                circle.setColor(getResources().getColor(R.color.color_circle_wrong));
+                rotate1.setDuration(ANIMATION_DURATION);
+                circle_txt.startAnimation(rotate1);
+
+                circle_txt.setText(":(");
+                break;
+            case TEXT_DEFAULT:
+                RotateAnimation rotate2 = new RotateAnimation(0f, 0f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+// prevents View from restoring to original direction.
+                rotate2.setFillAfter(true);
+                rotate2.setDuration(100);
+                circle_txt.startAnimation(rotate2);
+                circle_txt.setText("5");
+                break;
+        }
+
+    }
+
     public void next_btn(View v) {
         imageButton.setEnabled(false);
-        updateColor();
         if (currentGame + 1 >= totalGame) {
             wordset.getWords().get(currentGame).setChancesTaken(maxChances);
             words_lost[currentGame] = word;
             currentGame++;
             displayAllLetters();
-
-
             new CountDownTimer(2000, 1000) {
 
                 @Override
@@ -229,8 +260,7 @@ public class GameNewActivity extends ActionBarActivity {
             words_lost[currentGame] = word;
             currentGame++;
             displayAllLetters();
-
-
+            rotateTextView(TEXT_LOOSE);
             new CountDownTimer(2000, 1000) {
 
                 @Override
@@ -245,6 +275,8 @@ public class GameNewActivity extends ActionBarActivity {
                     setupGame(currentGame);
                     imageButton.setEnabled(true);
 
+                    wrong = 0;
+                    updateColor();
                 }
 
             }.start();
@@ -273,11 +305,15 @@ public class GameNewActivity extends ActionBarActivity {
             circle.setColor(Color.argb(255, 247, 57, 15));
             circle_txt.setText(1 + "");
         } else if (wrong == 5) {
-            Toast.makeText(this, "You lost this Challenge!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "You lost this Challenge!", Toast.LENGTH_SHORT).show();
             circle.setColor(Color.argb(255, 247, 49, 15));
             circle_txt.setText(0 + "");
         } else if (wrong == 6) {
             circle.setColor(Color.argb(255, 148, 11, 0));
+            circle_txt.setText(6 + "");
+        } else if (wrong == 0) {
+            circle.setColor(getResources().getColor(R.color.chances_left_0));
+            circle_txt.setText(0 + "");
         }
     }
 
@@ -457,6 +493,7 @@ public class GameNewActivity extends ActionBarActivity {
             System.out.append(word.getOriginalValue() + ",");
         }
 
+        Log.d("asd", "" + circle_txt.getRotation());
 
     }
 
@@ -580,6 +617,7 @@ public class GameNewActivity extends ActionBarActivity {
     }
 
     void setupGame(int gameIndex) {
+        rotateTextView(TEXT_DEFAULT);
         List<Character> char_array = new ArrayList<Character>(Arrays.asList(new Character[]{'Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A', '1', '2', '3', '4', '5', '6', '7', '8', '9'}));
         if (currentGame != 0) {
             removeTextViews();

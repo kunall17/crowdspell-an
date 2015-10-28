@@ -61,7 +61,7 @@
                 android:gravity="center"
                 android:text="5"
                 android:textColor="#FFFFFF"
-                android:textSize="25dp" />
+                android:textSize="35sp" />
 
             <TextView
                 android:id="@+id/statusTV"
@@ -126,7 +126,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="keyBtn_Click"
-                    android:text="New Button" />
+                    android:text="New Button"
+                    />
 
                 <Button
                     android:id="@+id/middle_btn"

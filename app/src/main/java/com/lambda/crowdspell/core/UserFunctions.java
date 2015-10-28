@@ -31,7 +31,7 @@ public class UserFunctions {
         return asd;
     }
 
-    public static class checkInternetConnectionAsync extends AsyncTask<Context, Boolean,Boolean> {
+    public static class checkInternetConnectionAsync extends AsyncTask<Context, Boolean, Boolean> {
 
         @Override
         protected void onPreExecute() {
@@ -46,7 +46,7 @@ public class UserFunctions {
                 urlc.setRequestProperty("Connection", "close");
                 urlc.setConnectTimeout(1500);
                 urlc.connect();
-                if(  urlc.getResponseCode() == 200) return true;
+                if (urlc.getResponseCode() == 200) return true;
             } catch (IOException e) {
                 Log.e("not-working", "Error checking internet connection", e);
             }
@@ -86,7 +86,6 @@ public class UserFunctions {
 
     //TODO getCurrentToken
     public String getCurrentToken(Context context) {
-        User us = new User();
         SharedPreferences sp = getShared(context);
         return sp.getString("token", "");
     }
@@ -120,11 +119,28 @@ public class UserFunctions {
             spe.putString("authProvider", insertBlankValueIfNull(user.getAuthenticationProvider()));
             spe.putString("salt", insertBlankValueIfNull(user.getSalt()));
             spe.putString("token", insertBlankValueIfNull(user.getToken()));
-            spe.putLong("id", Long.valueOf(insertBlankValueIfNull(user.getId().toString())));
-            spe.putString("joiningDate", insertBlankValueIfNull(user.getJoiningDate().toString()));
+
+            if (user.getId() == null) {
+                spe.putLong("id", 0);
+            } else {
+                spe.putLong("id", Long.valueOf(insertBlankValueIfNull(user.getId().toString())));
+            }
+           if(user.getJoiningDate()==null){
+               spe.putString("joiningDate","");
+           } else
+               spe.putString("joiningDate", insertBlankValueIfNull(user.getJoiningDate().toString()));
+
+
+
+
             //Insert UserDetails
-            spe.putString("email", insertBlankValueIfNull(user.getDetails().getEmail()));
-            spe.putString("platform", insertBlankValueIfNull(user.getDetails().getPlatform()));
+            if (user.getDetails().getEmail() == null) {
+                spe.putString("email", "");
+            } else spe.putString("email", insertBlankValueIfNull(user.getDetails().getEmail()));
+
+            if(user.getDetails().getPlatform()==null){
+                spe.putString("platform","");
+            } else spe.putString("platform", insertBlankValueIfNull(user.getDetails().getPlatform()));
             spe.commit();
         } catch (Exception e) {
             Log.d("exception-error", e.toString());
@@ -157,6 +173,7 @@ public class UserFunctions {
         SharedPreferences sp = getShared(context);
         sp.edit().clear();
         sp.edit().commit();
+
     }
 
     public SharedPreferences getShared(Context context) {

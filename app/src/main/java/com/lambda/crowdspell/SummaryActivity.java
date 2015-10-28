@@ -95,21 +95,11 @@ public class SummaryActivity extends ActionBarActivity {
     }
 
     public void submitScore(SetScoreCarrier ssc) {
-        GameManager.submitScoreAsync submit = new GameManager.submitScoreAsync(SummaryActivity.this);
-        int code = 0;
-        try {
-            code = submit.execute(ssc).get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }
-        Log.d("Score", code + "");
-        if (code < 300 && code > 199) {
-            Toast.makeText(SummaryActivity.this, "Saved Your Score", Toast.LENGTH_LONG).show();
+        if(new UserFunctions().checkIfGuestModeIsOn(SummaryActivity.this)){
+            Toast.makeText(SummaryActivity.this, "You are a guest your score cannot be saved!", Toast.LENGTH_SHORT).show();
         } else {
-            submitScore(ssc);
-            Log.d("submitScore", "Some problem is coming");
+            GameManager.submitScoreAsync submit = new GameManager.submitScoreAsync(SummaryActivity.this);
+            submit.execute(ssc);
         }
     }
 
@@ -136,9 +126,10 @@ public class SummaryActivity extends ActionBarActivity {
     }
 
     public void backtoDash_btn(View v) {
+        Intent intent=new Intent();
+        setResult(2,intent);
         finish();
-        Intent in1 = new Intent(SummaryActivity.this, DashboardActivity.class);
-        startActivity(in1);
+
     }
 
     public void startDashboard(final Boolean recurse) {

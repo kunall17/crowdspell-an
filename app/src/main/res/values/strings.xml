@@ -27,7 +27,7 @@
     //Server Adresses.!
     //
     <string name="SERVER_ADDRESS1">http://46.101.37.183:8080/crowdspell-web/api/v1/</string>
-    <string name="SERVER_ADDRESS">http://46.101.37.183:8080/crowdspell-web/api/v1/</string>
+    <string name="SERVER_ADDRESS">http://localhost/</string>
     <string name="SERVER_ADDRESS_USER">users</string>
     <string name="SERVER_ADDRESS_SETS">sets</string>
     <string name="SERVER_ADDRESS_SCORES">scores</string>
@@ -121,7 +121,7 @@
     <string name="drawer_menu_leaderboard">LeaderBoards</string>
     <string name="search_title">Search Sets</string>
     <string name="search_hint">Search</string>
-    <string name="title_activity_dashboard_new">DashboardNewActivity</string>
+    <string name="title_activity_dashboard_new">Home</string>
 
 
     <string name="drawer_open">Open</string>

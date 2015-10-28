@@ -65,7 +65,16 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        user_ET = (EditText) findViewById(R.id.loginIdText);
+
+        if (getResources().getString(R.string.SERVER_ADDRESS) != getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
+            Intent ne = new Intent(LoginActivity.this,DashboardNewActivity.class);
+            String json = getJson();
+            Log.d("json",json);
+            ne.putExtra("json_sets", json);
+            startActivity(ne);
+            return;
+        }
+            user_ET = (EditText) findViewById(R.id.loginIdText);
         pass_ET = (EditText) findViewById(R.id.pwdText);
 
 
@@ -96,6 +105,11 @@ public class LoginActivity extends ActionBarActivity {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+        User user = new UserFunctions().getCurrentUser(this);
+        Log.d("user-info", "token-" + user.getToken());
+        Log.d("user-info", "salt-" + user.getSalt());
+        Log.d("user-info", "ID-" + user.getId());
 
         if (internet) {
             getAllLists asd = new getAllLists(LoginActivity.this);
@@ -160,7 +174,7 @@ public class LoginActivity extends ActionBarActivity {
         if (getResources().getString(R.string.SERVER_ADDRESS) == getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
             UserFunctions.checkInternetConnectionAsync checkInternet = new UserFunctions.checkInternetConnectionAsync();
             try {
-                if (checkInternet.execute(getBaseContext()).get() == true) {
+                if (checkInternet.execute(getBaseContext()).get() == false) {
                     Toast.makeText(this, "Please check your Internet Connection", Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -187,6 +201,7 @@ public class LoginActivity extends ActionBarActivity {
                     if (token.length() == 36) {
                         user.setToken(token);
                         startDashboard(false);
+                        new UserFunctions().deleteSharedPreferences(this);
                         new UserFunctions().saveToSharedPreferences(user, this);
                     }
                 } catch (InterruptedException e) {

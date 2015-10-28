@@ -11,6 +11,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.igl.crowdword.R;
 import com.lambda.crowdspell.SummaryActivity;
+import com.lambda.crowdspell.core.UserFunctions;
 import com.lambda.crowdspell.fxns.WordSet;
 import com.lambda.crowdspell.fxns.analysis.SetScoreCarrier;
 import com.lambda.crowdspell.fxns.analysis.UserPoints;
@@ -245,12 +246,15 @@ public class GameManager extends NetworkManager {
 
     public static class submitScoreAsync extends AsyncTask<SetScoreCarrier, List<UserPoints>, Integer> {
         ProgressDialog progress;
+        Context context = null;
 
         public submitScoreAsync(Context context) {
             progress = new ProgressDialog(context);
             progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progress.setMessage("Submiting Score!");
             progress.setIndeterminate(true);
-            progress.setTitle("Submiting Score!");
+            progress.setTitle("Score");
+            this.context = context;
         }
 
         @Override
@@ -266,10 +270,10 @@ public class GameManager extends NetworkManager {
             String finalString;
             SetScoreCarrier ssc = params[0];
             String result = null;
-            int code = 0;
             BufferedReader rdr = null;
-            Gson gson = new Gson();
+            Gson gson = getJsonWriterWithCustomDate();
             result = gson.toJson(ssc);
+
             try {
                 URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/" + ApiPaths.SCORES);
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -286,21 +290,21 @@ public class GameManager extends NetworkManager {
 
                 DataOutputStream wr = new DataOutputStream(con.getOutputStream());
                 wr.writeBytes(result);
+                Log.d("ssc json", result);
                 wr.flush();
                 wr.close();
+
+                Log.d("ssc json", result.substring(0, result.length() / 2));
+                Log.d("ssc json", result.substring(result.length() / 2 , result.length()));
+
+
                 status = con.getResponseCode();
                 System.out.println(" received " + status);
-
                 rdr = new BufferedReader(new InputStreamReader(con.getInputStream()));
-
                 String line;
-
                 while ((line = rdr.readLine()) != null) {
                     sb.append(line);
                 }
-                finalString = sb.toString();
-
-                code = status;
                 System.out.println(result);
                 if (status == R.string.EXISTING_RESOURCE) {
                     System.out.println("Status code=" + 409);
@@ -310,30 +314,30 @@ public class GameManager extends NetworkManager {
                     System.out.println("Status code=" + 400);
                     return (status);
                     //   throw new NetworkException("The username or password did not match.");
-                } else if (status == R.string.OK) {
+                } else if (status >= 200 && status <= 300) {
                     System.out.println("Status code=" + 200);
-                    return 0;
+                    Log.d("result200", "Updated Score");
+                    return status;
                 }
             } catch (Exception e) {
-                finalString = e.toString();
+                System.out.println(e.getCause().toString());
                 System.out.println("Exception Aa gaya-" + e.toString());
             } finally {
-                if((rdr != null))
+                if ((rdr != null))
                     try {
                         rdr.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
             }
-            return code;
+            return status;
         }
 
-
-        protected void onPostExecute(int result) {
+        @Override
+        protected void onPostExecute(Integer result) {
             System.out.println("Result is here:-" + result);
             progress.dismiss();
         }
-
     }
 
 

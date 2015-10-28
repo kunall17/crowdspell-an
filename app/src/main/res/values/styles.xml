@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="AppTheme.Base">
+    <style name="AppTheme" parent="@style/Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
     </style>
 
@@ -10,7 +10,17 @@
         <!--   your app branding color for the app bar -->
         <item name="colorPrimary">#313B44</item>
 
+
     </style>
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ApplicationStyle" parent="android:Theme">
+        <item name="android:buttonStyle">@style/DarkButtonStyle</item>
+    </style>
+
+    <style name="DarkButtonStyle">
+        <item name="android:background">#1A1A1A</item>
+
+    </style>
 </resources>
