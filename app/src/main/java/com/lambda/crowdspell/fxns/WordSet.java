@@ -1,5 +1,8 @@
 package com.lambda.crowdspell.fxns;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,42 +11,21 @@ import java.util.List;
  * Created by Kunal on 7/16/2015.
  */
 
-public class WordSet  {
+public class WordSet implements Parcelable {
  /*
 // @Table(name = "crowdspell_set")
 // @NamedQueries(value = { // @NamedQuery(name = QueryKs.GET_NEW_SETS, query = "select w from WordSet w order by w.createdDate desc") })
 */
 
 
-
-
     private static final long serialVersionUID = 1L;
-
-//    // @Id
-  //  // @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
-  //  // @ManyToOne
-  //  // @JoinColumn(name = "userId")
     private User user;
-
-    // @Column
     private String name;
-
-    // @Column
     private Integer difficultyLevel;
-
-    // @Column
     private Date createdDate;
-
-    // @Column
     private Date lastUpdate;
-
-    // @ManyToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    // @JoinTable(name = "wordSets_tags")
     private List<Tag> tags;
-
-    // @Transient
     private List<Word> words;
 
     public List<Word> getWords() {
@@ -54,7 +36,6 @@ public class WordSet  {
         this.words = words;
     }
 
-    // @Transient
     private String userToken;
 
     public String getUserToken() {
@@ -68,6 +49,7 @@ public class WordSet  {
     public List<Tag> getTags() {
         return tags;
     }
+
 
     public void setTags(List<Tag> tags) {
         this.tags = tags;
@@ -129,5 +111,56 @@ public class WordSet  {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeParcelable(this.user, flags);
+        dest.writeString(this.name);
+        dest.writeValue(this.difficultyLevel);
+
+        if (createdDate != null) dest.writeLong(Long.valueOf(this.createdDate.getTime()));
+        else dest.writeLong(0);
+
+        if (lastUpdate != null) dest.writeLong(Long.valueOf(this.lastUpdate.getTime()));
+        else dest.writeLong(0);
+        dest.writeTypedList(tags);
+        dest.writeTypedList(words);
+        dest.writeList(this.words);
+        dest.writeString(this.userToken);
+    }
+
+    public WordSet() {
+    }
+
+    protected WordSet(Parcel in) {
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.user = in.readParcelable(User.class.getClassLoader());
+        this.name = in.readString();
+        this.difficultyLevel = (Integer) in.readValue(Integer.class.getClassLoader());
+
+
+        Long a = in.readLong();
+        if (a != 0) this.createdDate = Date.valueOf(String.valueOf(in.readLong()));
+        a = in.readLong();
+        if (a != 0) this.lastUpdate = Date.valueOf(String.valueOf(in.readLong()));
+        this.tags = in.createTypedArrayList(Tag.CREATOR);
+        this.words = new ArrayList<Word>();
+        in.readList(this.words, List.class.getClassLoader());
+        this.userToken = in.readString();
+    }
+
+    public static final Parcelable.Creator<WordSet> CREATOR = new Parcelable.Creator<WordSet>() {
+        public WordSet createFromParcel(Parcel source) {
+            return new WordSet(source);
+        }
+
+        public WordSet[] newArray(int size) {
+            return new WordSet[size];
+        }
+    };
 }

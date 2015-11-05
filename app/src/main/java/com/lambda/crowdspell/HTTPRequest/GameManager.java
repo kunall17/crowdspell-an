@@ -68,6 +68,8 @@ public class GameManager extends NetworkManager {
 
     }
 
+
+
     public static class getAllSetsAsync2 extends AsyncTask<Context, List<WordSet>, List<WordSet>> {
 
         @Override

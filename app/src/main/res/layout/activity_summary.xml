@@ -53,12 +53,27 @@
         android:layout_weight="1"
         android:headerDividersEnabled="false" />
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="backtoDash_btn"
-        android:text="Back to Dashboard"
-        android:layout_gravity="right" />
-</LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Share"
+                android:id="@+id/button"
+                android:onClick="sharing_btn" />
+
+            <Button
+                android:id="@+id/button7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="backtoDash_btn"
+                android:text="Back to Dashboard"
+                android:layout_gravity="right" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

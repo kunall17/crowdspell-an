@@ -27,6 +27,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.lambda.crowdspell.HTTPRequest.UserManager;
 import com.igl.crowdword.R;
+import com.lambda.crowdspell.core.Stopwatch;
 import com.lambda.crowdspell.core.UserFunctions;
 import com.lambda.crowdspell.fxns.Word;
 import com.lambda.crowdspell.fxns.WordSet;
@@ -39,6 +40,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
 import java.util.concurrent.ExecutionException;
 
 public class GameNewActivity extends ActionBarActivity {
@@ -80,6 +82,8 @@ public class GameNewActivity extends ActionBarActivity {
     Button right;
     Button middle;
     String words_lost[];
+    TextView stopwatch_txt;
+    CountDownTimer timer;
 
     public void print(String text) {
         System.out.println(text);
@@ -107,9 +111,11 @@ public class GameNewActivity extends ActionBarActivity {
         String ssc_json = gson.toJson(ssc);
         in1.putExtra("ssc", ssc_json);
         Log.d("json", ssc_json);
-
+        timer.cancel();
         in1.putExtra("words_won", words_won);
+        in1.putExtra("wordsetId", wordset.getId());
         startActivityForResult(in1, 0);
+
     }
 
     public void favourite_btn(View v) {
@@ -422,9 +428,7 @@ public class GameNewActivity extends ActionBarActivity {
                     if (theLetter.charAt(0) == g) {
                         System.out.println("Current letter is: " + g);
                         myTextViews[i].setText(theLetter);
-
                     }
-
                 }
             }
 
@@ -461,6 +465,10 @@ public class GameNewActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_new);
+        stopwatch_txt = (TextView) findViewById(R.id.stopwatch_txt);
+        Stopwatch sw = new Stopwatch();
+        sw.start();
+
         left = (Button) findViewById(R.id.left_btn);
         right = (Button) findViewById(R.id.right_btn);
         middle = (Button) findViewById(R.id.middle_btn);
@@ -494,6 +502,7 @@ public class GameNewActivity extends ActionBarActivity {
         }
 
         Log.d("asd", "" + circle_txt.getRotation());
+
 
     }
 
@@ -766,7 +775,68 @@ public class GameNewActivity extends ActionBarActivity {
         Collections.shuffle(word_char);
         printCharArray();
         currentChar = word_char.get(0);
+        if (timer != null) {
+            timer.cancel();
+        }
+        timer = new CountDownTimer(500000, 1000) {
+            int sec = 0;
 
+            public void onTick(long millisUntilFinished) {
+                sec++;
+                stopwatch_txt.setText(String.format("%02d:%02d", sec / 60, sec % 60));
+            }
+
+            public void onFinish() {
+                Toast.makeText(GameNewActivity.this, "Timeout!", Toast.LENGTH_SHORT).show();
+                imageButton.setEnabled(false);
+                if (currentGame + 1 >= totalGame) {
+                    wordset.getWords().get(currentGame).setChancesTaken(maxChances);
+                    words_lost[currentGame] = word;
+                    currentGame++;
+                    displayAllLetters();
+                    new CountDownTimer(2000, 1000) {
+
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            // do something after 1s
+                        }
+
+                        @Override
+                        public void onFinish() {
+
+                        }
+
+                    }.start();
+                } else {
+                    wordset.getWords().get(currentGame).setChancesTaken(maxChances);
+                    words_lost[currentGame] = word;
+                    currentGame++;
+                    displayAllLetters();
+                    rotateTextView(TEXT_LOOSE);
+                    new CountDownTimer(2000, 1000) {
+
+                        @Override
+                        public void onTick(long millisUntilFinished) {
+                            // do something after 1s
+                        }
+
+                        @Override
+                        public void onFinish() {
+                            resetAll();
+                            removeTextViews();
+                            setupGame(currentGame);
+                            imageButton.setEnabled(true);
+
+                            wrong = 0;
+                            updateColor();
+                        }
+
+                    }.start();
+                }
+
+//                mTextField.setText("done!");
+            }
+        }.start();
     }
 
     public void testing_btjn(View v) {
@@ -786,5 +856,38 @@ public class GameNewActivity extends ActionBarActivity {
 //        Log.d("word_char", s);
 //        Log.d("currentWord", word);
 //        Log.d("currentGame", currentGame + "");
+    }
+
+    public void share_btn(View v) {
+        String shareBody = getResources().getString(R.string.share_msg) +  wordset.getId();
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share Using"));
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(GameNewActivity.this);
+        builder.setTitle("Exit?");
+        builder.setMessage("Are you Sure you want leave the set?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                finish();
+//                Intent in1 = new Intent(GameNewActivity.this,DashboardNewActivity.class);
+//                startActivity(in1);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

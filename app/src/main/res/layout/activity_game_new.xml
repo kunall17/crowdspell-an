@@ -45,6 +45,18 @@
         android:paddingTop="@dimen/activity_vertical_margin">
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/stopwatch_txt"
+            android:textStyle="bold"
+            android:textAlignment="center"
+            android:gravity="center_vertical|center_horizontal"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
+
         <LinearLayout
             android:id="@+id/circle_linear"
             android:layout_width="match_parent"
@@ -196,6 +208,12 @@
                     android:layout_height="wrap_content"
                     android:onClick="help_btn"
                     android:src="@drawable/ic_action_help" />
+                <ImageButton
+                    android:id="@+id/share_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:onClick="share_btn"
+                    android:src="@drawable/ic_action_share" />
 
             </LinearLayout>
 
@@ -214,5 +232,7 @@
                 android:src="@drawable/ic_action_previous_item" />
 
         </RelativeLayout>
+
     </LinearLayout>
+
 </LinearLayout>

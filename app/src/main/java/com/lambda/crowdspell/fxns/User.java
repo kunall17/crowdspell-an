@@ -1,11 +1,14 @@
 package com.lambda.crowdspell.fxns;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.Date;
 
 /**
  * Created by Kunal on 7/12/2015.
  */
-public class User {
+public class User implements Parcelable {
 
     
     private static final long serialVersionUID = 1L;
@@ -100,4 +103,46 @@ public class User {
     public void saveToShare(User dd ,UserDetails ud){
 
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.username);
+        dest.writeString(this.token);
+        dest.writeLong(joiningDate != null ? joiningDate.getTime() : -1);
+        dest.writeParcelable(this.details, flags);
+        dest.writeString(this.password);
+        dest.writeString(this.salt);
+        dest.writeString(this.authenticationProvider);
+    }
+
+    public User() {
+    }
+
+    protected User(Parcel in) {
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.username = in.readString();
+        this.token = in.readString();
+        long tmpJoiningDate = in.readLong();
+        this.joiningDate = tmpJoiningDate == -1 ? null : new Date(tmpJoiningDate);
+        this.details = in.readParcelable(UserDetails.class.getClassLoader());
+        this.password = in.readString();
+        this.salt = in.readString();
+        this.authenticationProvider = in.readString();
+    }
+
+    public static final Parcelable.Creator<User> CREATOR = new Parcelable.Creator<User>() {
+        public User createFromParcel(Parcel source) {
+            return new User(source);
+        }
+
+        public User[] newArray(int size) {
+            return new User[size];
+        }
+    };
 }

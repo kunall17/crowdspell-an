@@ -51,7 +51,20 @@ public class SummaryActivity extends ActionBarActivity {
     List<WordSet> wordset_list = null;
     List<WordSet> fav_list;
     List<String> top_list;
+    Long wordsetId;
+    public void sharing_btn(View v){
+        String shareBody =getResources().getString(R.string.share_msg)+  String.valueOf(wordsetId);
+        Log.d("setId",String.valueOf(wordsetId));
+        Log.d("setId",getIntent().getIntExtra("wordsetId",0)+"");
 
+
+
+        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+        sharingIntent.setType("text/plain");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Share");
+        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(sharingIntent, "Share Using"));
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +76,7 @@ public class SummaryActivity extends ActionBarActivity {
         Gson gson = new Gson();
         String ssc_json = getIntent().getStringExtra("ssc");
         ssc = gson.fromJson(ssc_json, SetScoreCarrier.class);
+        wordsetId = ssc.getSetId();
         int won = getIntent().getIntExtra("words_won", 0);
         Log.d("jsonr", ssc_json);
         TextView won_text = (TextView) findViewById(R.id.won_txt);
@@ -146,6 +160,10 @@ public class SummaryActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
+        Intent in1 = new Intent(SummaryActivity.this,DashboardNewActivity.class);
+        startActivity(in1);
+        if(2==2)
+        return;
         if (internet) {
             getAllLists asd = new getAllLists(SummaryActivity.this);
             asd.execute(this);

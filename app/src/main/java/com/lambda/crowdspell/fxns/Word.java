@@ -1,32 +1,35 @@
 package com.lambda.crowdspell.fxns;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.sql.Date;
 
 /**
  * Created by Kunal on 7/16/2015.
  */
-public class Word {
+public class Word implements Parcelable {
     //@Table(name = "crowdspell_words")
-   // @NamedQuery(name=QueryKs.WORDS_FOR_SET, query="select w from Word w where w.wordSet=:wordSet")
+    // @NamedQuery(name=QueryKs.WORDS_FOR_SET, query="select w from Word w where w.wordSet=:wordSet")
 
-   // @Id
-   // @GeneratedValue(strategy = GenerationType.AUTO)
+    // @Id
+    // @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     //@Column
     private String originalValue;
 
-  //  @Column
+    //  @Column
     private Date createdDate;
 
-//    @Column
+    //    @Column
     private Date lastUpdate;
 
-//    @ManyToOne
-  //  @JoinColumn(name = "setId")
+    //    @ManyToOne
+    //  @JoinColumn(name = "setId")
     private WordSet wordSet;
-//
- //   @Column
+    //
+    //   @Column
     private String hint;
 
     public String getHint() {
@@ -37,10 +40,10 @@ public class Word {
         this.hint = hint;
     }
 
-  //  @Transient
+    //  @Transient
     private String userToken;
 
-//    @Transient
+    //    @Transient
     private int chancesTaken;
 
     public int getChancesTaken() {
@@ -100,4 +103,52 @@ public class Word {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeValue(this.id);
+        dest.writeString(this.originalValue);
+
+
+        if (createdDate!= null) dest.writeLong(this.createdDate.getTime());
+        else dest.writeLong(0);
+        if (lastUpdate != null) dest.writeLong(this.lastUpdate.getTime());
+        else dest.writeLong(0);
+        dest.writeParcelable(this.wordSet, 0);
+        dest.writeString(this.hint);
+        dest.writeString(this.userToken);
+        dest.writeInt(this.chancesTaken);
+    }
+
+    public Word() {
+    }
+
+    protected Word(Parcel in) {
+        this.id = (Long) in.readValue(Long.class.getClassLoader());
+        this.originalValue = in.readString();
+
+       Long a = in.readLong();
+        if(a!=0) this.createdDate = Date.valueOf(String.valueOf(a));
+
+        a = in.readLong();
+        if(a!=0) this.lastUpdate = Date.valueOf(String.valueOf(a));
+        this.wordSet = in.readParcelable(WordSet.class.getClassLoader());
+        this.hint = in.readString();
+        this.userToken = in.readString();
+        this.chancesTaken = in.readInt();
+    }
+
+    public static final Parcelable.Creator<Word> CREATOR = new Parcelable.Creator<Word>() {
+        public Word createFromParcel(Parcel source) {
+            return new Word(source);
+        }
+
+        public Word[] newArray(int size) {
+            return new Word[size];
+        }
+    };
 }

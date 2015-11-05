@@ -1,9 +1,12 @@
 package com.lambda.crowdspell;
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
@@ -15,6 +18,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.appindexing.AppIndexApi;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
@@ -32,9 +39,12 @@ import com.lambda.crowdspell.fxns.analysis.UserPoints;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.UnsupportedEncodingException;
@@ -60,34 +70,183 @@ public class LoginActivity extends ActionBarActivity {
     List<String> top_list;
 
 
+//    static final Uri APP_URI = Uri.parse("crowdspell://game");
+//    static final Uri WEB_URL = Uri.parse("http://lambdaapps.in/crowdspell/");
+//    private GoogleApiClient mClient;
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//
+//        // Connect your client
+//        mClient.connect();
+//
+//        // Define a title for your current page, shown in autocompletion UI
+//        String title = "App Indexing API Title";
+//
+//        // Construct the Action performed by the user
+//        Action viewAction = Action.newAction(Action.TYPE_VIEW, title, WEB_URL, APP_URI);
+//
+//        // Call the App Indexing API start method after the view has completely rendered
+//        AppIndex.AppIndexApi.start(mClient, viewAction);
+//
+//    }
+//
+//    @Override
+//    public void onStop() {
+//        String title = "App Indexing API Title";
+//        Action viewAction = Action.newAction(Action.TYPE_VIEW, title, WEB_URL, APP_URI);
+//        AppIndex.AppIndexApi.end(mClient, viewAction);
+//        mClient.disconnect();
+//
+//        super.onStop();
+//    }
+//protected void onNewIntent(Intent intent) {
+//    String action = intent.getAction();
+//    String data = intent.getDataString();
+//    if (Intent.ACTION_VIEW.equals(action) && data != null) {
+//        String recipeId = data.substring(data.lastIndexOf("/") + 1);
+//       Log.d("opened",recipeId);
+//    }
+
+    //            var loc = "crowdspell://game?id="+queryParams.gId;
+
+
+    public class getWordSet extends AsyncTask<Integer, String, Integer> {
+        ProgressDialog progress;
+        Context context;
+
+        public getWordSet(Context context) {
+            this.context = context;
+            progress = new ProgressDialog(context);
+        }
+
+        @Override
+        protected void onPreExecute() {
+//            updateDisplay("Starting task");
+            progress.setMessage("Getting WordSet :) ");
+            progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+            progress.setIndeterminate(true);
+            progress.show();
+        }
+
+        WordSet wordset;
+
+        @Override
+        protected Integer doInBackground(Integer... params) {
+            String output = "";
+            try {
+
+                URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/sets/id/" + params[0]);
+
+                HttpURLConnection con = (HttpURLConnection) url.openConnection();
+                con.setRequestMethod("GET");
+                con.setRequestProperty(ApiPaths.APP_AUTH_KEY,
+                        ApiPaths.ANDROID_APP_KEY);
+                con.connect();
+
+                int code = con.getResponseCode();
+                Log.d("Code", code + "");
+                output = readFromConnection(con);
+
+                Gson gson = getJsonWriterWithCustomDate();
+                wordset = gson.fromJson(output, WordSet.class);
+                return code;
+            } catch (MalformedURLException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            return 0;
+        }
+
+        protected void onProgressUpdate(String... progUpdate) {
+            progress.setMessage(progUpdate[0]);
+        }
+
+        protected void onPostExecute(Integer userPoints) {
+            Intent in1 = new Intent(LoginActivity.this, GameNewActivity.class);
+
+            Gson gson = new Gson();
+            String json_new = gson.toJson(wordset);
+
+            in1.putExtra("json_new", json_new);
+            //in1.putExtra ("wordName", game_word[position].toUpperCase());
+
+            startActivity(in1);
+
+
+        }
+
+    }
+
+    String id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-
-        if (getResources().getString(R.string.SERVER_ADDRESS) != getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
-            Intent ne = new Intent(LoginActivity.this,DashboardNewActivity.class);
-            String json = getJson();
-            Log.d("json",json);
-            ne.putExtra("json_sets", json);
-            startActivity(ne);
-            return;
-        }
-            user_ET = (EditText) findViewById(R.id.loginIdText);
-        pass_ET = (EditText) findViewById(R.id.pwdText);
-
-
         UserFunctions asd = new UserFunctions();
-        if (asd.checkIfGuestModeIsOn(this)) {
-            System.out.println("ASD");
-            startDashboard(true);
-        } else if (asd.checkIfSharedPreferencesforUserExists(this)) {
-            System.out.println("ASD123");
-            asd.deleteSharedPreferences(this);
-            Log.d("xxx", asd.getCurrentUsername(this));
-            startDashboard(true);
 
+        Uri data = getIntent().getData();
+        if (data != null) {
+            Log.v("ASD", data.toString());
+
+
+            id = data.toString().substring(data.toString().lastIndexOf("=") + 1, data.toString().length());
+
+            if (!asd.checkIfSharedPreferencesforUserExists(this)) {
+                Toast.makeText(LoginActivity.this, "Guest mode Enabled!", Toast.LENGTH_SHORT).show();
+                asd.saveAsGuest(getBaseContext());
+            }
+
+            getWordSet get = new getWordSet(LoginActivity.this);
+
+            try {
+                int s = get.execute(Integer.parseInt(String.valueOf(id))).get();
+
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+
+
+        } else {
+//        mClient = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+//
+//        onNewIntent(getIntent());
+
+//        String action = getIntent().getAction();
+//        String data = getIntent().getDataString();
+//        Log.d("out",action +":"+data);
+
+            if (getResources().getString(R.string.SERVER_ADDRESS) != getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
+                Intent ne = new Intent(LoginActivity.this, DashboardNewActivity.class);
+                String json = getJson();
+                Log.d("json", json);
+                ne.putExtra("json_sets", json);
+                startActivity(ne);
+                return;
+            }
+
+            if (asd.checkIfGuestModeIsOn(this)) {
+                System.out.println("ASD");
+                startDashboard(true);
+            } else if (asd.checkIfSharedPreferencesforUserExists(this)) {
+                System.out.println("ASD123");
+                asd.deleteSharedPreferences(this);
+                Log.d("xxx", asd.getCurrentUsername(this));
+                startDashboard(true);
+
+
+            }
+
+            user_ET = (EditText) findViewById(R.id.loginIdText);
+            pass_ET = (EditText) findViewById(R.id.pwdText);
 
         }
     }
@@ -365,6 +524,7 @@ public class LoginActivity extends ActionBarActivity {
                     int code = con.getResponseCode();
                     Log.d("Code", code + "");
                     output = readFromConnection(con);
+                    writeToFile(output, "sets");
                 } else {
                     output = getJson();
                 }
@@ -382,22 +542,31 @@ public class LoginActivity extends ActionBarActivity {
             }
             publishProgress("Getting Tops :)");
 
-            try {
-                URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/scores");
 
-                HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                con.setRequestMethod("GET");
-                con.setRequestProperty(ApiPaths.APP_AUTH_KEY,
-                        ApiPaths.ANDROID_APP_KEY);
-                con.connect();
+            try {
+                String content = "";
+                if (getResources().getString(R.string.SERVER_ADDRESS) == getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
+                    URL url = new URL("http://46.101.37.183:8080/crowdspell-web/api/v1/scores");
+                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
+
+
+                    con.setRequestMethod("GET");
+                    con.setRequestProperty(ApiPaths.APP_AUTH_KEY,
+                            ApiPaths.ANDROID_APP_KEY);
+                    con.connect();
 
 //                HttpURLConnection connection = getConnection(ApiPaths.SCORES);
-                String content = null;
-                content = readFromConnection(con);
+
+                    content = readFromConnection(con);
+                    Log.d("userPoints", "code-" + con.getResponseCode());
+                } else {
+                    content = getJsonTops();
+                }
+
+
                 Gson gson = getJsonWriterWithCustomDate();
                 UserPoints[] userPoints = gson.fromJson(content, UserPoints[].class);
                 userpoints_list = Arrays.asList(userPoints);
-                Log.d("userPoints", "code-" + con.getResponseCode());
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -459,6 +628,25 @@ public class LoginActivity extends ActionBarActivity {
             startActivity(in1);
         }
 
+    }
+
+    private void writeToFile(String data, String fileName) {
+        try {
+            File mediaDir = new File("/sdcard/json");
+            if (!mediaDir.exists()) {
+                mediaDir.mkdir();
+            }
+
+            File resolveMeSDCard = new File("/sdcard/json/" + fileName + ".txt");
+            resolveMeSDCard.createNewFile();
+            FileOutputStream fos = new FileOutputStream(resolveMeSDCard);
+            fos.write(data.getBytes());
+            fos.close();
+
+            System.out.println("Your file has been written");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static class getAllSetsAsync2 extends AsyncTask<Context, List<WordSet>, List<WordSet>> {
@@ -596,6 +784,32 @@ public class LoginActivity extends ActionBarActivity {
 
     }
 
+
+    String getJsonTops() {
+        InputStream is = getResources().openRawResource(R.raw.gettops);
+        Writer writer = new StringWriter();
+        char[] buffer = new char[1024];
+        try {
+            Reader reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+            int n;
+            while ((n = reader.read(buffer)) != -1) {
+                writer.write(buffer, 0, n);
+            }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                is.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        return writer.toString();
+
+    }
 
     private static HttpURLConnection getBaseConnection(String extension)
             throws IOException {
