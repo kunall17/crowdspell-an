@@ -102,9 +102,9 @@ public class DashboardNewActivity extends AppCompatActivity implements YourRecyc
 //        System.out.println(fav + "-2");
 //        System.out.println("fav-" + fav);
 //        System.out.println("top-" + getIntent().getStringExtra("json_top"));
-            Gson gson = new Gson();
+//            Gson gson = new Gson();
+            Gson gson = getJsonWriterWithCustomDate();
             if (getResources().getString(R.string.SERVER_ADDRESS) != getResources().getString(R.string.SERVER_ADDRESS1)) {
-                gson = getJsonWriterWithCustomDate();
             }
             wordset_list = Arrays.asList(gson.fromJson(sets, WordSet[].class));
             wordset_list_current = wordset_list;
@@ -178,6 +178,8 @@ public class DashboardNewActivity extends AppCompatActivity implements YourRecyc
 
 
         //Notice how the title is set on the Collapsing Toolbar Layout instead of the Toolbar
+        String username = new UserFunctions().getCurrentUser(DashboardNewActivity.this).getUsername();
+        navigationView.getMenu().findItem(R.id.drawer_username).setTitle("Hi " + username);
 
         if (new UserFunctions().checkIfGuestModeIsOn(DashboardNewActivity.this)) {
             navigationView.getMenu().findItem(R.id.drawer_create).setVisible(false);
@@ -473,7 +475,7 @@ public class DashboardNewActivity extends AppCompatActivity implements YourRecyc
             @Override
             public boolean onMenuItemActionCollapse(MenuItem item) {
                 // Write your code here
-                wordset_list_current=wordset_list;
+                wordset_list_current = wordset_list;
                 resetList();
                 Log.d(TAG, "123");
                 return true;
@@ -809,7 +811,7 @@ class YourRecyclerAdapterForSets extends RecyclerView.Adapter<YourRecyclerAdapte
 
     @Override
     public void onBindViewHolder(YourRecyclerViewHolder yourRecyclerViewHolder, int i) {
-        Log.d("viewHolder", wordset_list.get(i).getName() + "  :  " + tags_list.get(i));
+//        Log.d("viewHolder", wordset_list.get(i).getName() + "  :  " + tags_list.get(i));
         yourRecyclerViewHolder.textView.setText(wordset_list.get(i).getName());
         yourRecyclerViewHolder.textView2.setText(tags_list.get(i));
 

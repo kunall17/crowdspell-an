@@ -18,7 +18,7 @@ android {
         applicationId 'com.lambda.crowdspell'
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 18
+        versionCode 20
         versionName '2.0'
     }
     buildTypes {

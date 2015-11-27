@@ -69,7 +69,6 @@ public class LoginActivity extends ActionBarActivity {
     List<WordSet> fav_list;
     List<String> top_list;
 
-
 //    static final Uri APP_URI = Uri.parse("crowdspell://game");
 //    static final Uri WEB_URL = Uri.parse("http://lambdaapps.in/crowdspell/");
 //    private GoogleApiClient mClient;
@@ -223,26 +222,24 @@ public class LoginActivity extends ActionBarActivity {
 //        String action = getIntent().getAction();
 //        String data = getIntent().getDataString();
 //        Log.d("out",action +":"+data);
-
-            if (getResources().getString(R.string.SERVER_ADDRESS) != getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
-                Intent ne = new Intent(LoginActivity.this, DashboardNewActivity.class);
-                String json = getJson();
-                Log.d("json", json);
-                ne.putExtra("json_sets", json);
-                startActivity(ne);
-                return;
-            }
+//
+//            if (getResources().getString(R.string.SERVER_ADDRESS) != getResources().getString(R.string.SERVER_ADDRESS1)) { //Remove this
+//                Intent ne = new Intent(LoginActivity.this, DashboardNewActivity.class);
+//                String json = getJson();
+//                Log.d("json", json);
+//                ne.putExtra("json_sets", json);
+//                startActivity(ne);
+//                return;
+//            }
 
             if (asd.checkIfGuestModeIsOn(this)) {
                 System.out.println("ASD");
                 startDashboard(true);
             } else if (asd.checkIfSharedPreferencesforUserExists(this)) {
                 System.out.println("ASD123");
-                asd.deleteSharedPreferences(this);
+                //TODO if this is correct -> asd.deleteSharedPreferences(this);
                 Log.d("xxx", asd.getCurrentUsername(this));
                 startDashboard(true);
-
-
             }
 
             user_ET = (EditText) findViewById(R.id.loginIdText);
@@ -493,6 +490,8 @@ public class LoginActivity extends ActionBarActivity {
         List<WordSet> favourites_list;
         Context context;
 
+        String sets_json;
+
         public getAllLists(Context context) {
             this.context = context;
             progress = new ProgressDialog(context);
@@ -524,14 +523,12 @@ public class LoginActivity extends ActionBarActivity {
                     int code = con.getResponseCode();
                     Log.d("Code", code + "");
                     output = readFromConnection(con);
-                    writeToFile(output, "sets");
+//                    writeToFile(output, "sets");
+                    sets_json=output;
                 } else {
-                    output = getJson();
+                    sets_json= getJson();
                 }
 
-                Gson gson = getJsonWriterWithCustomDate();
-                WordSet[] sets = gson.fromJson(output, WordSet[].class);
-                wordset_list = Arrays.asList(sets);
 
             } catch (MalformedURLException e) {
                 // TODO Auto-generated catch block
@@ -614,9 +611,8 @@ public class LoginActivity extends ActionBarActivity {
                 in1.putExtra("json_top", top_list_string);
             }
             Gson gson = new Gson();
-            String json_sets = gson.toJson(wordset_list);
             String json_fav = gson.toJson(favourites_list);
-            in1.putExtra("json_sets", json_sets);
+            in1.putExtra("json_sets", sets_json);
 
             if (favourites_list.size() == 0) {
                 in1.putExtra("json_fav", "");
